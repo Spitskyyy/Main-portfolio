@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Expériences - Portfolio BTS SIO SLAM{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="mb-5">
+        <h1 class="display-4 fw-bold mb-3">Mes Expériences Professionnelles</h1>
+        <p class="lead text-muted">
+            Découvrez mes stages et expériences professionnelles dans le domaine de l'informatique.
+        </p>
+    </div>
+
+    <div class="timeline position-relative">
+        {% for experience in experiences %}
+            <div class="card mb-5 border-start border-5 {% if loop.index is odd %}border-primary{% else %}border-secondary{% endif %}">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between flex-column flex-md-row mb-4">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light rounded p-2 me-3" style="width: 60px; height: 60px;">
+                            </div>
+                            <div>
+                                <h2 class="h4 fw-bold mb-1">{{ experience.position }}</h2>
+                                <h3 class="h6 mb-0">{{ experience.company }}</h3>
+                            </div>
+                        </div>
+                        <div class="mt-2 mt-md-0">
+                            <div class="badge bg-light text-dark mb-1">
+                                <i class="far fa-calendar-alt me-1"></i>{{ experience.period }}
+                            </div>
+                            <div class="d-block">
+                                <i class="fas fa-map-marker-alt text-muted me-1"></i>
+                                <small class="text-muted">{{ experience.location }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p>{{ experience.description }}</p>
+                    
+                    <div class="mb-3">
+                        <h4 class="h6 fw-bold">Missions principales :</h4>
+                        <ul class="mb-0">
+                            {% for task in experience.tasks %}
+                                <li>{{ task }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="h6 fw-bold">Compétences :</h4>
+                        <div>
+                            {% for skill in experience.skills %}
+                                <span class="badge bg-secondary me-1 mb-1">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        width: 2px;
+        background-color: #e9ecef;
+        display: none;
+    }
+    
+    @media (min-width: 768px) {
+        .timeline::before {
+            display: block;
+        }
+        
+        .timeline .card {
+            margin-left: 40px;
+        }
+    }
+</style>
+{% endblock %}

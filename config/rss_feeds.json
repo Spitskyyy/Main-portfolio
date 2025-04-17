@@ -1,0 +1,101 @@
+{
+    "feeds": [
+        {
+            "name": "PHP.net News",
+            "url": "https:\/\/www.php.net\/feed.atom",
+            "category": "D\u00e9veloppement Web",
+            "isActive": true,
+            "id": "initial2"
+        },
+        {
+            "name": "Le Journal du Hacker",
+            "url": "https:\/\/www.journalduhacker.net\/rss",
+            "category": "D\u00e9veloppement Web",
+            "isActive": true,
+            "id": "initial3"
+        },
+        {
+            "name": "Frelance",
+            "url": "https:\/\/developpeur-freelance.io\/blog\/feed",
+            "category": "D\u00e9veloppement Web",
+            "isActive": true,
+            "id": "67ff8677782db"
+        },
+        {
+            "name": "Cshub",
+            "url": "https:\/\/www.cshub.com\/rss-feeds",
+            "category": "Cybers\u00e9curit\u00e9",
+            "isActive": true,
+            "id": "6800b8cf8a6ae"
+        },
+        {
+            "name": "TheHackersNews",
+            "url": "https:\/\/feeds.feedburner.com\/TheHackersNews",
+            "category": "Cybers\u00e9curit\u00e9",
+            "isActive": true,
+            "id": "6800b8f57a223"
+        },
+        {
+            "name": "Sciencedaily",
+            "url": "https:\/\/www.sciencedaily.com\/rss\/computers_math\/artificial_intelligence.xml",
+            "category": "Intelligence Artificielle",
+            "isActive": true,
+            "id": "6800b93445257"
+        },
+        {
+            "name": "Technologyreview",
+            "url": "https:\/\/www.technologyreview.com\/feed\/",
+            "category": "Intelligence Artificielle",
+            "isActive": true,
+            "id": "6800b97eac7c4"
+        },
+        {
+            "name": "Nvidia",
+            "url": "https:\/\/blogs.nvidia.com\/blog\/category\/ai\/feed\/",
+            "category": "Intelligence Artificielle",
+            "isActive": true,
+            "id": "6800b994b7dcc"
+        },
+        {
+            "name": "Drweb",
+            "url": "https:\/\/news.drweb.fr\/rss\/get\/?c=5",
+            "category": "Cybers\u00e9curit\u00e9",
+            "isActive": true,
+            "id": "6800baa3d021d"
+        },
+        {
+            "name": "Thalesgroup",
+            "url": "https:\/\/www.thalesgroup.com\/fr\/feed\/articles-all-news\/rss.xml",
+            "category": "Cybers\u00e9curit\u00e9",
+            "isActive": true,
+            "id": "6800badadb2b9"
+        }
+    ],
+    "categories": [
+        {
+            "name": "D\u00e9veloppement Web",
+            "icon": "fa-code",
+            "color": "primary"
+        },
+        {
+            "name": "Intelligence Artificielle",
+            "icon": "fa-robot",
+            "color": "success"
+        },
+        {
+            "name": "Cybers\u00e9curit\u00e9",
+            "icon": "fa-shield-alt",
+            "color": "danger"
+        },
+        {
+            "name": "DevOps & Cloud",
+            "icon": "fa-server",
+            "color": "info"
+        },
+        {
+            "name": "Mobile & Apps",
+            "icon": "fa-mobile-alt",
+            "color": "warning"
+        }
+    ]
+}

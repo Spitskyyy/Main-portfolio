@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ feed ? 'Modifier' : 'Ajouter' }} un flux RSS - Portfolio BTS SIO SLAM{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="mb-4">
+        <h1 class="h2 fw-bold">{{ feed ? 'Modifier' : 'Ajouter' }} un flux RSS</h1>
+        <p class="text-muted">
+            {{ feed ? 'Modifiez les informations du flux RSS.' : 'Ajoutez un nouveau flux RSS à suivre pour votre veille technologique.' }}
+        </p>
+    </div>
+    
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" action="{{ feed ? path('app_veille_feed_edit', {'id': feed.id}) : path('app_veille_feed_new') }}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nom de la source</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ feed.name|default('') }}" required>
+                            <div class="form-text">Donnez un nom clair à cette source.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="url" class="form-label">URL du flux RSS</label>
+                            <input type="url" class="form-control" id="url" name="url" value="{{ feed.url|default('') }}" required>
+                            <div class="form-text">L'URL doit pointer vers un flux RSS valide (ex: https://example.com/feed.xml).</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Catégorie</label>
+                            <select class="form-select" id="category" name="category">
+                                {% for category in categories %}
+                                    <option value="{{ category.name }}" {% if feed and feed.category == category.name %}selected{% endif %}>
+                                        {{ category.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="is_active" name="is_active" {% if feed is null or feed.isActive %}checked{% endif %}>
+                            <label class="form-check-label" for="is_active">Actif</label>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i> {{ feed ? 'Enregistrer les modifications' : 'Ajouter le flux RSS' }}
+                            </button>
+                            <a href="{{ path('app_veille_feeds') }}" class="btn btn-outline-secondary">
+                                Annuler
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <h2 class="h5 fw-bold mb-0">Aide</h2>
+                </div>
+                <div class="card-body">
+                    <h3 class="h6 fw-bold">Comment trouver l'URL d'un flux RSS ?</h3>
+                    <p class="small">
+                        La plupart des sites web proposent des flux RSS, généralement indiqués par une icône 
+                        <i class="fas fa-rss text-warning"></i> ou un lien "RSS" ou "Flux".
+                    </p>
+                    <p class="small">
+                        Si vous ne trouvez pas le flux RSS d'un site, vous pouvez essayer d'ajouter "/feed", "/rss", 
+                        ou "/atom" à l'URL du site.
+                    </p>
+                    
+                    <h3 class="h6 fw-bold mt-3">Exemples de flux RSS populaires :</h3>
+                    <ul class="small">
+                        <li>Symfony Blog : <code>https://symfony.com/blog/feed</code></li>
+                        <li>PHP.net News : <code>https://www.php.net/feed.atom</code></li>
+                        <li>Le Journal du Hacker : <code>https://www.journalduhacker.net/rss</code></li>
+                        <li>Developpez.com : <code>https://www.developpez.com/index/rss</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

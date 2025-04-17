@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Veille Numérique - Portfolio BTS SIO SLAM{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h2 fw-bold mb-0">Veille Numérique</h1>
+        <a href="{{ path('app_veille_feeds') }}" class="btn btn-primary">
+            <i class="fas fa-rss me-1"></i> Gérer mes flux RSS
+        </a>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="h5 fw-bold mb-3">Qu'est-ce que la veille numérique ?</h2>
+            <p class="mb-0">
+                La veille numérique est une activité qui consiste à se tenir informé des évolutions technologiques
+                et des innovations dans son domaine professionnel. Pour un développeur informatique, cette veille
+                est essentielle pour rester à jour sur les nouvelles technologies, les bonnes pratiques et les tendances
+                du secteur.
+            </p>
+        </div>
+    </div>
+    
+    {% if latestArticles|length > 0 %}
+        <div class="mb-5">
+            <h2 class="h4 fw-bold mb-4">Derniers articles</h2>
+            
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {% for article in latestArticles|slice(0, 6) %}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm">
+                            {% if article.image %}
+                                <div class="position-relative">
+                                    <img src="{{ article.image }}" class="card-img-top" alt="{{ article.title }}" style="height: 160px; object-fit: cover;">
+                                    <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ article.source }}</span>
+                                </div>
+                            {% else %}
+                                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 160px;">
+                                    <i class="fas fa-newspaper fa-3x text-muted"></i>
+                                    <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ article.source }}</span>
+                                </div>
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <h3 class="h6 fw-bold card-title">{{ article.title }}</h3>
+                                <p class="card-text small">{{ article.description|raw }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                                <small class="text-muted">{{ article.date }}</small>
+                                <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
+                                    Lire <i class="fas fa-external-link-alt ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info mb-4">
+            <i class="fas fa-info-circle me-2"></i>
+            Aucun article n'a été trouvé. Veuillez ajouter des flux RSS pour commencer votre veille numérique.
+        </div>
+    {% endif %}
+    
+    {# Reste du template inchangé... #}
+    
+    {% if categories|length > 0 and feedsByCategory|length > 0 %}
+        <div class="mb-5">
+            <h2 class="h4 fw-bold mb-4">Articles par catégorie</h2>
+            
+            <ul class="nav nav-tabs mb-4" id="categoryTabs" role="tablist">
+                {% for category in categories %}
+                    {% if feedsByCategory[category.name] is defined and feedsByCategory[category.name]|length > 0 %}
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {% if loop.first %}active{% endif %}" 
+                                    id="tab-{{ loop.index }}" 
+                                    data-bs-toggle="tab" 
+                                    data-bs-target="#content-{{ loop.index }}" 
+                                    type="button" 
+                                    role="tab" 
+                                    aria-controls="content-{{ loop.index }}" 
+                                    aria-selected="{% if loop.first %}true{% else %}false{% endif %}">
+                                <i class="fas {{ category.icon }} me-1" style="color: var(--bs-{{ category.color }})"></i>
+                                {{ category.name }}
+                            </button>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            
+            <div class="tab-content" id="categoryTabsContent">
+                {% for category in categories %}
+                    {% if feedsByCategory[category.name] is defined and feedsByCategory[category.name]|length > 0 %}
+                        <div class="tab-pane fade {% if loop.first %}show active{% endif %}" 
+                             id="content-{{ loop.index }}" 
+                             role="tabpanel" 
+                             aria-labelledby="tab-{{ loop.index }}">
+                            
+                            {% if articlesByCategory[category.name] is defined and articlesByCategory[category.name]|length > 0 %}
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                                    {% for article in articlesByCategory[category.name] %}
+                                        <div class="col">
+                                            <div class="card h-100 shadow-sm">
+                                                {% if article.image %}
+                                                    <div class="position-relative">
+                                                        <img src="{{ article.image }}" class="card-img-top" alt="{{ article.title }}" style="height: 160px; object-fit: cover;">
+                                                        <span class="badge bg-{{ category.color }} position-absolute top-0 end-0 m-2">{{ article.source }}</span>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 160px;">
+                                                        <i class="fas {{ category.icon }} fa-3x text-{{ category.color }}"></i>
+                                                        <span class="badge bg-{{ category.color }} position-absolute top-0 end-0 m-2">{{ article.source }}</span>
+                                                    </div>
+                                                {% endif %}
+                                                
+                                                <div class="card-body">
+                                                    <h3 class="h6 fw-bold card-title">{{ article.title }}</h3>
+                                                    <p class="card-text small">{{ article.description|raw }}</p>
+                                                </div>
+                                                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">{{ article.date }}</small>
+                                                    <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-{{ category.color }}">
+                                                        Lire <i class="fas fa-external-link-alt ms-1"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Aucun article n'a été trouvé pour cette catégorie.
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    
+    <div class="card">
+        <div class="card-body">
+            <h2 class="h5 fw-bold mb-3">Ma stratégie de veille</h2>
+            <p>
+                Pour rester à jour dans le domaine du développement web et de la cybersécurité, j'ai mis en place une stratégie de veille
+                qui s'appuie sur plusieurs sources d'information :
+            </p>
+            
+            <ul class="mb-3">
+                <li><strong>Flux RSS</strong> : Je suis les blogs et sites spécialisés via leurs flux RSS.</li>
+                <li><strong>Réseaux sociaux</strong> : Je suis des experts et des communautés techniques sur Twitter et Reddit.</li>
+            </ul>
+            
+            <p class="mb-0">
+                Cette approche multi-sources me permet de rester informé des dernières évolutions technologiques et des bonnes pratiques
+                dans mon domaine, tout en développant une vision critique des informations reçues.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

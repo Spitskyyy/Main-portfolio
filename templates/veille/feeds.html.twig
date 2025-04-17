@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des flux RSS - Portfolio BTS SIO SLAM{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h2 fw-bold mb-0">Gestion des flux RSS</h1>
+        <a href="{{ path('app_veille_feed_new') }}" class="btn btn-primary">
+            <i class="fas fa-plus-circle me-1"></i> Ajouter un flux RSS
+        </a>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <p class="mb-0">
+                Cette page vous permet de gérer les flux RSS que vous souhaitez suivre pour votre veille technologique.
+                Les articles des flux actifs seront automatiquement affichés sur la page de veille numérique.
+            </p>
+        </div>
+    </div>
+    
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    
+    <div class="card">
+        <div class="card-header bg-transparent">
+            <h2 class="h5 fw-bold mb-0">Mes flux RSS</h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Catégorie</th>
+                        <th>URL</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if feeds|length > 0 %}
+                        {% for feed in feeds %}
+                            <tr>
+                                <td>{{ feed.name }}</td>
+                                <td>
+                                    <span class="badge bg-secondary">{{ feed.category }}</span>
+                                </td>
+                                <td>
+                                    <a href="{{ feed.url }}" target="_blank" rel="noopener noreferrer" class="text-truncate d-inline-block" style="max-width: 250px;">
+                                        {{ feed.url }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {% if feed.isActive %}
+                                        <span class="badge bg-success">Actif</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Inactif</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ path('app_veille_feed_edit', {'id': feed.id}) }}" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ path('app_veille_feed_toggle', {'id': feed.id}) }}" class="btn btn-sm btn-outline-warning">
+                                            {% if feed.isActive %}
+                                                <i class="fas fa-toggle-off"></i>
+                                            {% else %}
+                                                <i class="fas fa-toggle-on"></i>
+                                            {% endif %}
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ feed.id }}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Modal de confirmation de suppression -->
+                                    <div class="modal fade" id="deleteModal{{ feed.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ feed.id }}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel{{ feed.id }}">Confirmer la suppression</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Êtes-vous sûr de vouloir supprimer le flux RSS "{{ feed.name }}" ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                    <form method="post" action="{{ path('app_veille_feed_delete', {'id': feed.id}) }}">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ feed.id) }}">
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center py-4">
+                                <div class="alert alert-info mb-0">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Aucun flux RSS n'a été ajouté pour le moment.
+                                </div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <a href="{{ path('app_veille') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Retour à la veille numérique
+        </a>
+    </div>
+</div>
+{% endblock %}

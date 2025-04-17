@@ -20,6 +20,11 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Service\ContactService:
+        arguments:
+            $emailTo: 'emeric.grall@orange.fr'  # Remplacez par votre email
+            $emailFrom: 'emeric.grall@orange.fr'  # Remplacez par l'email d'expédition
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 

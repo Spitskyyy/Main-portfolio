@@ -2,67 +2,58 @@
 
 namespace App\Form;
 
+use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'Nom',
+            ->add('nom', TextType::class, [
+                'label' => 'Votre nom',
                 'attr' => [
-                    'placeholder' => 'Votre nom',
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer votre nom',
-                    ]),
-                ],
+                    'placeholder' => 'Prénom Nom',
+                    'class' => 'form-control'
+                ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'Votre email',
                 'attr' => [
-                    'placeholder' => 'votre.email@exemple.com',
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer votre email',
-                    ]),
-                    new Email([
-                        'message' => 'Veuillez entrer un email valide',
-                    ]),
-                ],
+                    'placeholder' => 'exemple@email.com',
+                    'class' => 'form-control'
+                ]
             ])
-            ->add('subject', TextType::class, [
+            ->add('sujet', TextType::class, [
                 'label' => 'Sujet',
                 'attr' => [
                     'placeholder' => 'Sujet de votre message',
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer un sujet',
-                    ]),
-                ],
+                    'class' => 'form-control'
+                ]
             ])
             ->add('message', TextareaType::class, [
-                'label' => 'Message',
+                'label' => 'Votre message',
                 'attr' => [
-                    'placeholder' => 'Votre message',
+                    'placeholder' => 'Écrivez votre message ici...',
                     'rows' => 6,
+                    'class' => 'form-control'
+                ]
+            ])
+            // Champ honeypot caché pour la protection anti-spam
+            ->add('website', TextType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'class' => 'd-none', // Masquer avec Bootstrap
+                    'autocomplete' => 'off',
+                    'tabindex' => '-1'
                 ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer votre message',
-                    ]),
-                ],
+                'mapped' => true
             ])
         ;
     }
@@ -70,7 +61,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => Contact::class,
         ]);
     }
 }

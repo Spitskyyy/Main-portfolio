@@ -11,161 +11,156 @@
         </p>
     </div>
 
-    <ul class="nav nav-tabs mb-4" id="competencesTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="dev-tab" data-bs-toggle="tab" data-bs-target="#dev" type="button" role="tab" aria-controls="dev" aria-selected="true">
-                <i class="fas fa-code me-2"></i>Développement
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="reseau-tab" data-bs-toggle="tab" data-bs-target="#reseau" type="button" role="tab" aria-controls="reseau" aria-selected="false">
-                <i class="fas fa-network-wired me-2"></i>Réseau
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="cyber-tab" data-bs-toggle="tab" data-bs-target="#cyber" type="button" role="tab" aria-controls="cyber" aria-selected="false">
-                <i class="fas fa-shield-alt me-2"></i>Cybersécurité
-            </button>
-        </li>
-    </ul>
-
-    <div class="tab-content" id="competencesTabsContent">
-        <!-- Onglet Développement -->
-        <div class="tab-pane fade show active" id="dev" role="tabpanel" aria-labelledby="dev-tab">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h2 class="h4 fw-bold mb-4">Compétences en Développement</h2>
-                    
-                    <div class="row">
-                        {% for competence in competencesDev %}
-                            <div class="col-md-6 mb-4">
-                                <div class="d-flex align-items-center mb-2">
-                                    <div class="me-3 text-{{ competence.couleur }}" style="width: 40px; text-align: center;">
-                                        <i class="{{ competence.icone }} fa-2x"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
-                                        <div class="progress" style="height: 8px;">
-                                            <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
-                                </div>
-                                <p class="text-muted small ps-5">{{ competence.description }}</p>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    
-                    <div class="mt-4">
-                        <h3 class="h5 fw-bold mb-3">Projets de développement réalisés</h3>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-3"></i>
-                                <div>
-                                    <strong>Application en Symfony</strong> - Développement de Stage Direct en Symfony
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-3"></i>
-                                <div>
-                                    <strong>Application de gestion</strong> - Création d'une application de gestion des stocks et commandes
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <!-- Section Développement -->
+    <div class="mb-5">
+        <div class="d-flex align-items-center mb-4">
+            <div class="me-3 text-primary">
+                <i class="fas fa-code fa-2x"></i>
             </div>
+            <h2 class="h3 fw-bold mb-0">Compétences en Développement</h2>
         </div>
         
-        <!-- Onglet Réseau -->
-        <div class="tab-pane fade" id="reseau" role="tabpanel" aria-labelledby="reseau-tab">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h2 class="h4 fw-bold mb-4">Compétences en Réseau</h2>
-                    
-                    <div class="row">
-                        {% for competence in competencesReseau %}
-                            <div class="col-md-6 mb-4">
-                                <div class="d-flex align-items-center mb-2">
-                                    <div class="me-3 text-{{ competence.couleur }}" style="width: 40px; text-align: center;">
-                                        <i class="{{ competence.icone }} fa-2x"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
-                                        <div class="progress" style="height: 8px;">
-                                            <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="row">
+                    {% for competence in competencesDev %}
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="me-3 text-{{ competence.couleur }}" style="width: 40px; text-align: center;">
+                                    <i class="{{ competence.icone }} fa-2x"></i>
                                 </div>
-                                <p class="text-muted small ps-5">{{ competence.description }}</p>
+                                <div class="flex-grow-1">
+                                    <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
                             </div>
-                        {% endfor %}
-                    </div>
-                    
-                    <div class="mt-4">
-                        <h3 class="h5 fw-bold mb-3">Projets réseau réalisés</h3>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-3"></i>
-                                <div>
-                                    <strong>Serveur Windows</strong> - Configuration d'un serveur Windows avec Active Directory
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-3"></i>
-                                <div>
-                                    <strong>Virtualisation</strong> - Mise en place de GLPI et FOG sur des machines virtuelles
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                            <p class="text-muted small ps-5">{{ competence.description }}</p>
+                        </div>
+                    {% endfor %}
                 </div>
-            </div>
-        </div>
-        
-        <!-- Onglet Cybersécurité -->
-        <div class="tab-pane fade" id="cyber" role="tabpanel" aria-labelledby="cyber-tab">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h2 class="h4 fw-bold mb-4">Compétences en Cybersécurité</h2>
-                    
-                    <div class="row">
-                        {% for competence in competencesCyber %}
-                            <div class="col-md-6 mb-4">
-                                <div class="d-flex align-items-center mb-2">
-                                    <div class="me-3 text-{{ competence.couleur }}" style="width: 40px; text-align: center;">
-                                        <i class="{{ competence.icone }} fa-2x"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
-                                        <div class="progress" style="height: 8px;">
-                                            <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
-                                </div>
-                                <p class="text-muted small ps-5">{{ competence.description }}</p>
+                
+                <div class="mt-4">
+                    <h3 class="h5 fw-bold mb-3">Projets de développement réalisés</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Application en Symfony</strong> - Développement de Stage Direct en Symfony
                             </div>
-                        {% endfor %}
-                    </div>
-                    
-                    <div class="mt-4">
-                        <h3 class="h5 fw-bold mb-3">Projets de cybersécurité réalisés</h3>
-                        <ul class="list-group list-group-flush">
-
-                            <li class="list-group-item d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-3"></i>
-                                <div>
-                                    <strong>Mise en conformité RGPD</strong> - Accompagnement d'une entreprise dans sa mise en conformité RGPD
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Application de gestion</strong> - Création d'une application de gestion des stocks et commandes
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Section Réseau -->
+    <div class="mb-5">
+        <div class="d-flex align-items-center mb-4">
+            <div class="me-3 text-info">
+                <i class="fas fa-network-wired fa-2x"></i>
+            </div>
+            <h2 class="h3 fw-bold mb-0">Compétences en Réseau</h2>
+        </div>
+        
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="row">
+                    {% for competence in competencesReseau %}
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="me-3 text-{{ competence.couleur }}" style="width: 40px; text-align: center;">
+                                    <i class="{{ competence.icone }} fa-2x"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
+                            </div>
+                            <p class="text-muted small ps-5">{{ competence.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mt-4">
+                    <h3 class="h5 fw-bold mb-3">Projets réseau réalisés</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Serveur Windows</strong> - Configuration d'un serveur Windows avec Active Directory
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Virtualisation</strong> - Mise en place de GLPI et FOG sur des machines virtuelles
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Section Cybersécurité -->
+    <div class="mb-5">
+        <div class="d-flex align-items-center mb-4">
+            <div class="me-3 text-danger">
+                <i class="fas fa-shield-alt fa-2x"></i>
+            </div>
+            <h2 class="h3 fw-bold mb-0">Compétences en Cybersécurité</h2>
+        </div>
+        
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="row">
+                    {% for competence in competencesCyber %}
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="me-3 text-{{ competence.couleur }}" style="width: 40px; text-align: center;">
+                                    <i class="{{ competence.icone }} fa-2x"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
+                            </div>
+                            <p class="text-muted small ps-5">{{ competence.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mt-4">
+                    <h3 class="h5 fw-bold mb-3">Projets de cybersécurité réalisés</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Mise en conformité RGPD</strong> - Accompagnement d'une entreprise dans sa mise en conformité RGPD
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}
 
@@ -179,17 +174,6 @@
     
     .progress-bar {
         transition: width 1.5s ease;
-    }
-    
-    .nav-tabs .nav-link {
-        color: #495057;
-        border-radius: 0;
-        padding: 0.75rem 1.25rem;
-    }
-    
-    .nav-tabs .nav-link.active {
-        font-weight: 600;
-        border-bottom: 3px solid #0d6efd;
     }
     
     .list-group-item {
@@ -211,35 +195,7 @@
 
 {% block javascripts %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Animation des barres de progression
-        setTimeout(function() {
-            document.querySelectorAll('.progress-bar').forEach(function(bar) {
-                bar.style.width = bar.getAttribute('aria-valuenow') + '%';
-            });
-        }, 300);
-        
-        // Gestion des onglets
-        var triggerTabList = [].slice.call(document.querySelectorAll('#competencesTabs button'))
-        triggerTabList.forEach(function (triggerEl) {
-            var tabTrigger = new bootstrap.Tab(triggerEl)
-            
-            triggerEl.addEventListener('click', function (event) {
-                event.preventDefault()
-                tabTrigger.show()
-                
-                // Réinitialiser et relancer l'animation des barres de progression
-                document.querySelectorAll('.progress-bar').forEach(function(bar) {
-                    bar.style.width = '0%';
-                });
-                
-                setTimeout(function() {
-                    document.querySelectorAll('.progress-bar').forEach(function(bar) {
-                        bar.style.width = bar.getAttribute('aria-valuenow') + '%';
-                    });
-                }, 300);
-            })
-        })
-    });
+    // Pas besoin de JavaScript pour l'animation des barres de progression
+    // car elles sont déjà définies avec leur largeur finale dans le HTML
 </script>
 {% endblock %}

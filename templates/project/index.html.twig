@@ -40,6 +40,12 @@
                                 </a>
                             {% endif %}
                             
+                            {% if project.demoLink is defined and project.demoLink %}
+                                <a href="{{ project.demoLink }}" class="btn btn-outline-success" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-play-circle me-2"></i>Demo
+                                </a>
+                            {% endif %}
+                            
                         </div>
                     </div>
                 </div>

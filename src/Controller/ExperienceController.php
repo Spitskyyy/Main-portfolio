@@ -13,7 +13,7 @@ class ExperienceController extends AbstractController
         $experiences = [
             [
                 'id'          => 1,
-                'company'     => 'Startup XYZ',
+                'company'     => 'Patines et moi',
                 'logo'        => '',
                 'position'    => 'Développeur Web',
                 'period'      => 'Février 2025 - Mars 2025',

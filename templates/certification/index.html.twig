@@ -1,193 +1,191 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Certifications - Portfolio BTS SIO SLAM{% endblock %}
+{% block title %}Certifications - Portfolio BTS SIO SLAM
+{% endblock %}
 
 {% block body %}
-<div class="container py-5">
-    <div class="mb-5">
-        <h1 class="display-4 fw-bold mb-3">Mes Certifications</h1>
-        <p class="lead text-muted">
-            Les certifications que j'ai obtenues pendant mon parcours de formation.
-        </p>
-    </div>
+	<div class="container py-5">
+		<div class="mb-5">
+			<h1 class="display-4 fw-bold mb-3">Mes Certifications</h1>
+			<p class="lead text-muted">
+				Les certifications que j'ai obtenues durant ma formation.
+			</p>
+		</div>
 
-    <div class="row g-4 mb-5">
-        {% for certification in certifications %}
-            <div class="col-md-6">
-                <div class="card h-100">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <div class="certification-image-container">
-                                <img src="{{ asset(certification.image) }}" class="img-fluid rounded-start h-100 certification-image" alt="{{ certification.title }}" onerror="this.src='{{ asset('images/placeholder.jpg') }}'">
-                                <div class="certification-image-overlay">
-                                    <a href="{{ asset(certification.fullImage) }}" class="btn btn-sm btn-light" target="_blank" data-bs-toggle="tooltip" title="Voir l'image en taille réelle">
-                                        <i class="fas fa-search-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start mb-2">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-award text-primary me-2"></i>
-                                        <h2 class="card-title h5 fw-bold mb-0">{{ certification.title }}</h2>
-                                    </div>
-                                    <span class="badge bg-light text-dark">{{ certification.score }}</span>
-                                </div>
-                                <p class="text-muted small mb-3">
-                                    <i class="far fa-calendar-alt me-1"></i>
-                                    {{ certification.date }} • {{ certification.issuer }}
-                                </p>
-                                <p class="card-text">{{ certification.description }}</p>
-                                <div class="mt-3">
-                                    <div class="d-flex flex-wrap gap-2">
-                                        {% if certification.officialLink is defined and certification.officialLink %}
-                                            <a href="{{ certification.officialLink }}" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener noreferrer">
-                                                <i class="fas fa-external-link-alt me-1"></i> Site officiel
-                                            </a>
-                                        {% endif %}
-                                        
-                                        {% if certification.verificationCode is defined and certification.verificationCode %}
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="tooltip" title="Code de vérification à utiliser sur le site officiel">
-                                                <i class="fas fa-check-circle me-1"></i> {{ certification.verificationCode }}
-                                            </button>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+		<div class="row g-4 mb-5">
+			{% for certification in certifications %}
+				<div class="col-md-6">
+					<div class="card h-100">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<div class="certification-image-container">
+									<img src="{{ asset(certification.image) }}" class="img-fluid rounded-start h-100 certification-image" alt="{{ certification.title }}" onerror="this.src='{{ asset('images/placeholder.jpg') }}'">
+									<div class="certification-image-overlay">
+										<a href="{{ asset(certification.fullImage) }}" class="btn btn-sm btn-light" target="_blank" data-bs-toggle="tooltip" title="Voir l'image en taille réelle">
+											<i class="fas fa-search-plus"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<div class="d-flex justify-content-between align-items-start mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fas fa-award text-primary me-2"></i>
+											<h2 class="card-title h5 fw-bold mb-0">{{ certification.title }}</h2>
+										</div>
+										<span class="badge bg-light text-dark">{{ certification.score }}</span>
+									</div>
+									<p class="text-muted small mb-3">
+										<i class="far fa-calendar-alt me-1"></i>
+										{{ certification.date }}
+										•
+										{{ certification.issuer }}
+									</p>
+									<p class="card-text">{{ certification.description }}</p>
+									<div class="mt-3">
+										<div class="d-flex flex-wrap gap-2">
+											{% if certification.officialLink is defined and certification.officialLink %}
+												<a href="{{ certification.officialLink }}" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener noreferrer">
+													<i class="fas fa-external-link-alt me-1"></i>
+													Site officiel
+												</a>
+											{% endif %}
 
-    <div class="card">
-        <div class="card-body">
-            <h2 class="h4 fw-bold mb-3">Pourquoi se certifier ?</h2>
-            <p>
-                Les certifications professionnelles sont un excellent moyen de valider mes compétences et de les rendre visibles
-                auprès des recruteurs. Elles attestent de mon niveau de maîtrise dans différents domaines et technologies.
-            </p>
-            <p class="mb-0">
-                Dans le cadre de mon BTS SIO, je m'efforce d'obtenir des certifications reconnues dans le domaine du développement
-                et de l'informatique pour enrichir mon profil professionnel et me démarquer sur le marché du travail.
-            </p>
-        </div>
-    </div>
-</div>
+											{% if certification.verificationCode is defined and certification.verificationCode %}
+												<button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="tooltip" title="Code de vérification à utiliser sur le site officiel">
+													<i class="fas fa-check-circle me-1"></i>
+													{{ certification.verificationCode }}
+												</button>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<h2 class="h4 fw-bold mb-3">Pourquoi se certifier ?</h2>
+				<p>
+					Dans le cadre de ma formation en BTS SIO option SLAM,
+					 j’ai choisi de passer des certifications pour valider mes compétences techniques dans le domaine du développement et de la cybersécurité.
+				</p>
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 {% block stylesheets %}
-<style>
-    /* Styles pour les images de certification */
-    .certification-image-container {
-        position: relative;
-        height: 100%;
-        min-height: 150px;
-        overflow: hidden;
-    }
-    
-    .certification-image {
-        object-fit: cover;
-        transition: transform 0.3s;
-    }
-    
-    .certification-image-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    
-    .certification-image-container:hover .certification-image {
-        transform: scale(1.1);
-    }
-    
-    .certification-image-container:hover .certification-image-overlay {
-        opacity: 1;
-    }
-    
-    /* Styles pour la galerie de certifications */
-    .certification-gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0.375rem 0.375rem 0 0;
-    }
-    
-    .certification-thumbnail {
-        height: 160px;
-        object-fit: cover;
-        transition: transform 0.3s;
-    }
-    
-    .certification-gallery-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    
-    .certification-gallery-item:hover .certification-thumbnail {
-        transform: scale(1.1);
-    }
-    
-    .certification-gallery-item:hover .certification-gallery-overlay {
-        opacity: 1;
-    }
-    
-    /* Styles pour les badges et boutons */
-    .badge {
-        font-weight: 500;
-        padding: 0.5em 0.75em;
-    }
-    
-    .btn-sm {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.875rem;
-    }
-</style>
+	<style>
+		/* Styles pour les images de certification */
+		.certification-image-container {
+			position: relative;
+			height: 100%;
+			min-height: 150px;
+			overflow: hidden;
+		}
+
+		.certification-image {
+			object-fit: cover;
+			transition: transform 0.3s;
+		}
+
+		.certification-image-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			opacity: 0;
+			transition: opacity 0.3s;
+		}
+
+		.certification-image-container:hover .certification-image {
+			transform: scale(1.1);
+		}
+
+		.certification-image-container:hover .certification-image-overlay {
+			opacity: 1;
+		}
+
+		/* Styles pour la galerie de certifications */
+		.certification-gallery-item {
+			position: relative;
+			overflow: hidden;
+			border-radius: 0.375rem 0.375rem 0 0;
+		}
+
+		.certification-thumbnail {
+			height: 160px;
+			object-fit: cover;
+			transition: transform 0.3s;
+		}
+
+		.certification-gallery-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			opacity: 0;
+			transition: opacity 0.3s;
+		}
+
+		.certification-gallery-item:hover .certification-thumbnail {
+			transform: scale(1.1);
+		}
+
+		.certification-gallery-item:hover .certification-gallery-overlay {
+			opacity: 1;
+		}
+
+		/* Styles pour les badges et boutons */
+		.badge {
+			font-weight: 500;
+			padding: 0.5em 0.75em;
+		}
+
+		.btn-sm {
+			padding: 0.25rem 0.5rem;
+			font-size: 0.875rem;
+		}
+	</style>
 {% endblock %}
 
 {% block javascripts %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialisation des tooltips Bootstrap
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-        
-        // Gestion du clic sur les images pour afficher en plein écran (optionnel)
-        document.querySelectorAll('.certification-image, .certification-thumbnail').forEach(function(img) {
-            img.addEventListener('click', function(e) {
-                // Empêcher le comportement par défaut
-                e.preventDefault();
-                
-                // Trouver le lien vers l'image en plein écran
-                var fullImageLink = this.closest('.certification-image-container, .certification-gallery-item')
-                    .querySelector('a[data-bs-toggle="tooltip"]');
-                
-                if (fullImageLink) {
-                    window.open(fullImageLink.getAttribute('href'), '_blank');
-                }
-            });
-        });
-    });
-</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () { // Initialisation des tooltips Bootstrap
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+return new bootstrap.Tooltip(tooltipTriggerEl);
+});
+
+// Gestion du clic sur les images pour afficher en plein écran (optionnel)
+document.querySelectorAll('.certification-image, .certification-thumbnail').forEach(function (img) {
+img.addEventListener('click', function (e) { // Empêcher le comportement par défaut
+e.preventDefault();
+
+// Trouver le lien vers l'image en plein écran
+var fullImageLink = this.closest('.certification-image-container, .certification-gallery-item').querySelector('a[data-bs-toggle="tooltip"]');
+
+if (fullImageLink) {
+window.open(fullImageLink.getAttribute('href'), '_blank');
+}
+});
+});
+});
+	</script>
 {% endblock %}

@@ -20,6 +20,7 @@ class ProjectController extends AbstractController
             'tags' => ['Symfony', 'PHP', 'TWIG', 'MariaDB', 'Tailwind', 'Git'],
             'githubLink' => 'https://github.com/Spitskyyy/stage-direct-final',
             'docLink' => 'https://kdrive.infomaniak.com/app/share/842951/3b222404-55ba-45b9-95b3-75ef5180104c',
+            'demoLink' => 'https://stage-direct.emeric-grall.fr/',
         ],
         [
             'id' => 2,
@@ -37,7 +38,7 @@ class ProjectController extends AbstractController
             'image' => '/fichier/lueur.png',
             'tags' => ['HTML', 'CSS', 'JavaScript', 'Git',],
             'githubLink' => 'https://github.com/Spitskyyy/Lueur-du-Mont',
-            'demoLink' => '#',
+            'demoLink' => 'https://spitskyyy.github.io/Lueur-du-Mont/',
         ],
         [
             'id' => 4,
@@ -46,6 +47,7 @@ class ProjectController extends AbstractController
             'image' => '/fichier/stage.png',
             'tags' => ['HTML', 'CSS', 'PHP', 'JavaScript', 'Git',],
             'githubLink' => 'https://github.com/Spitskyyy/tc-bois',
+            'demoLink' => 'https://tc-bois.emeric-grall.fr/',
         ],
         [
             'id' => 5,

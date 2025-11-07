@@ -1,85 +1,131 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Projets - Portfolio BTS SIO SLAM{% endblock %}
+{% block title %}Projets - Portfolio BTS SIO SLAM
+{% endblock %}
 
 {% block body %}
-<div class="container py-5">
-    <div class="mb-5">
-        <h1 class="display-4 fw-bold mb-3">Mes Projets</h1>
-        <p class="lead text-muted">
-            Découvrez les projets que j'ai réalisés pendant ma formation et mes stages.
-        </p>
-    </div>
+	<div class="container py-5">
+		<div class="mb-5">
+			<h1 class="display-4 fw-bold mb-3">Mes Projets</h1>
+			<p class="lead text-muted">
+				Découvrez les projets que j'ai réalisés pendant mes formations et mes stages.
+			</p>
+		</div>
+		<h1 class="display-4 fw-bold mb-3">Mes Projets SLAM</h1>
 
-    <div class="row g-4">
-        {% for project in projects %}
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100">
-                    <img src="{{ asset(project.image) }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h2 class="card-title h5 fw-bold">{{ project.title }}</h2>
-                        <div class="mb-3">
-                            {% for tag in project.tags %}
-                                <span class="badge bg-secondary me-1 mb-1">{{ tag }}</span>
-                            {% endfor %}
-                        </div>
-                        <p class="card-text">{{ project.description }}</p>
-                    </div>
-                    <div class="card-footer bg-transparent">
-                        <div class="d-flex flex-wrap gap-2">
-                            <a href="{{ project.githubLink }}" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github me-2"></i>Code
-                            </a>
-                            
-                            {% if project.docLink is defined and project.docLink %}
-                                <a href="{{ project.docLink }}" class="btn btn-outline-info" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-book me-2"></i>Doc
-                                    {% if project.docType is defined and project.docType %}
-                                        <span class="badge bg-info text-white ms-1">{{ project.docType }}</span>
-                                    {% endif %}
-                                </a>
-                            {% endif %}
-                            
-                            {% if project.demoLink is defined and project.demoLink %}
-                                <a href="{{ project.demoLink }}" class="btn btn-outline-success" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-play-circle me-2"></i>Demo
-                                </a>
-                            {% endif %}
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
+		<div class="row g-4">
+			{% for project in projects %}
+				<div class="col-md-6 col-lg-4">
+					<div class="card h-100">
+						<img src="{{ asset(project.image) }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+						<div class="card-body">
+							<h2 class="card-title h5 fw-bold">{{ project.title }}</h2>
+							<div class="mb-3">
+								{% for tag in project.tags %}
+									<span class="badge bg-secondary me-1 mb-1">{{ tag }}</span>
+								{% endfor %}
+							</div>
+							<p class="card-text">{{ project.description }}</p>
+						</div>
+						<div class="card-footer bg-transparent">
+							<div class="d-flex flex-wrap gap-2">
+								<a href="{{ project.githubLink }}" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">
+									<i class="fab fa-github me-2"></i>Code
+								</a>
+
+								{% if project.docLink is defined and project.docLink %}
+									<a href="{{ project.docLink }}" class="btn btn-outline-info" target="_blank" rel="noopener noreferrer">
+										<i class="fas fa-book me-2"></i>Doc
+										{% if project.docType is defined and project.docType %}
+											<span class="badge bg-info text-white ms-1">{{ project.docType }}</span>
+										{% endif %}
+									</a>
+								{% endif %}
+
+								{% if project.demoLink is defined and project.demoLink %}
+									<a href="{{ project.demoLink }}" class="btn btn-outline-success" target="_blank" rel="noopener noreferrer">
+										<i class="fas fa-play-circle me-2"></i>Demo
+									</a>
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+<hr>
+		<h1 class="display-4 fw-bold mb-3">Mes Projets SISR</h1>
+		<div class="row g-4">
+			{% for project in projects %}
+				<div class="col-md-6 col-lg-4">
+					<div class="card h-100">
+						<img src="{{ asset(project.image) }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+						<div class="card-body">
+							<h2 class="card-title h5 fw-bold">{{ project.title }}</h2>
+							<div class="mb-3">
+								{% for tag in project.tags %}
+									<span class="badge bg-secondary me-1 mb-1">{{ tag }}</span>
+								{% endfor %}
+							</div>
+							<p class="card-text">{{ project.description }}</p>
+						</div>
+						<div class="card-footer bg-transparent">
+							<div class="d-flex flex-wrap gap-2">
+								<a href="{{ project.githubLink }}" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">
+									<i class="fab fa-github me-2"></i>Code
+								</a>
+
+								{% if project.docLink is defined and project.docLink %}
+									<a href="{{ project.docLink }}" class="btn btn-outline-info" target="_blank" rel="noopener noreferrer">
+										<i class="fas fa-book me-2"></i>Doc
+										{% if project.docType is defined and project.docType %}
+											<span class="badge bg-info text-white ms-1">{{ project.docType }}</span>
+										{% endif %}
+									</a>
+								{% endif %}
+
+								{% if project.demoLink is defined and project.demoLink %}
+									<a href="{{ project.demoLink }}" class="btn btn-outline-success" target="_blank" rel="noopener noreferrer">
+										<i class="fas fa-play-circle me-2"></i>Demo
+									</a>
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
 
 {% block stylesheets %}
-<style>
-    .card {
-        transition: transform 0.2s, box-shadow 0.2s;
-        border-radius: 0.5rem;
-    }
-    
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .badge {
-        font-weight: 500;
-    }
-    
-    .btn {
-        border-radius: 0.375rem;
-    }
-    
-    /* Style pour le badge du type de documentation */
-    .btn-outline-info .badge {
-        font-size: 0.7em;
-        padding: 0.25em 0.5em;
-        vertical-align: middle;
-    }
-</style>
+	<style>
+		.card {
+			transition: transform 0.2s, box-shadow 0.2s;
+			border-radius: 0.5rem;
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.badge {
+			font-weight: 500;
+		}
+
+		.btn {
+			border-radius: 0.375rem;
+		}
+
+		/* Style pour le badge du type de documentation */
+		.btn-outline-info .badge {
+			font-size: 0.7em;
+			padding: 0.25em 0.5em;
+			vertical-align: middle;
+		}
+	</style>
 {% endblock %}

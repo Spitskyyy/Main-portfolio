@@ -7,7 +7,7 @@
     <div class="mb-5">
         <h1 class="display-4 fw-bold mb-3">Mes Compétences</h1>
         <p class="lead text-muted">
-            Découvrez mes compétences techniques acquises durant ma formation BTS SIO SLAM et mes expériences professionnelles.
+            Découvrez mes compétences techniques acquises durant ma formation BTS SIO SISR et mes expériences professionnelles.
         </p>
         
         <!-- Section pour le tableau de synthèse (style CV) -->
@@ -22,6 +22,57 @@
                             <i class="fas fa-file-pdf me-2"></i>Voir le tableau de synthèse 
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Section Réseau -->
+    <div class="mb-5">
+        <div class="d-flex align-items-center mb-4">
+            <div class="me-3 text-info">
+                <i class="fas fa-network-wired fa-2x"></i>
+            </div>
+            <h2 class="h3 fw-bold mb-0">Compétences en Réseau</h2>
+        </div>
+        
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="row">
+                    {% for competence in competencesReseau %}
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="me-3 text-{{ competence.couleur }}" style="width: 40px; text-align: center;">
+                                    <i class="{{ competence.icone }} fa-2x"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
+                                    {# <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div> #}
+                                </div>
+                                {# <div class="ms-2 text-muted small">{{ competence.niveau }}%</div> #}
+                            </div>
+                            <p class="text-muted small ps-5">{{ competence.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mt-4">
+                    <h3 class="h5 fw-bold mb-3">Projets réseau réalisés</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Serveur Windows</strong> - Configuration d'un serveur Windows avec Active Directory
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Virtualisation</strong> - Mise en place de GLPI et FOG sur des machines virtuelles
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -47,11 +98,11 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
-                                    <div class="progress" style="height: 8px;">
+                                    {# <div class="progress" style="height: 8px;">
                                         <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                                    </div> #}
                                 </div>
-                                <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
+                                {# <div class="ms-2 text-muted small">{{ competence.niveau }}%</div> #}
                             </div>
                             <p class="text-muted small ps-5">{{ competence.description }}</p>
                         </div>
@@ -79,57 +130,7 @@
         </div>
     </div>
     
-    <!-- Section Réseau -->
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <div class="me-3 text-info">
-                <i class="fas fa-network-wired fa-2x"></i>
-            </div>
-            <h2 class="h3 fw-bold mb-0">Compétences en Réseau</h2>
-        </div>
-        
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <div class="row">
-                    {% for competence in competencesReseau %}
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex align-items-center mb-2">
-                                <div class="me-3 text-{{ competence.couleur }}" style="width: 40px; text-align: center;">
-                                    <i class="{{ competence.icone }} fa-2x"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
-                                    <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
-                            </div>
-                            <p class="text-muted small ps-5">{{ competence.description }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
-                
-                <div class="mt-4">
-                    <h3 class="h5 fw-bold mb-3">Projets réseau réalisés</h3>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex align-items-center">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <div>
-                                <strong>Serveur Windows</strong> - Configuration d'un serveur Windows avec Active Directory
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex align-items-center">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <div>
-                                <strong>Virtualisation</strong> - Mise en place de GLPI et FOG sur des machines virtuelles
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     
     <!-- Section Cybersécurité -->
     <div class="mb-5">
@@ -151,11 +152,11 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <h3 class="h6 fw-bold mb-1">{{ competence.nom }}</h3>
-                                    <div class="progress" style="height: 8px;">
+                                    {# <div class="progress" style="height: 8px;">
                                         <div class="progress-bar bg-{{ competence.couleur }}" role="progressbar" style="width: {{ competence.niveau }}%;" aria-valuenow="{{ competence.niveau }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                                    </div> #}
                                 </div>
-                                <div class="ms-2 text-muted small">{{ competence.niveau }}%</div>
+                                {# <div class="ms-2 text-muted small">{{ competence.niveau }}%</div> #}
                             </div>
                             <p class="text-muted small ps-5">{{ competence.description }}</p>
                         </div>

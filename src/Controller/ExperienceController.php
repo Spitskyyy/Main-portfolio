@@ -13,6 +13,21 @@ class ExperienceController extends AbstractController
         $experiences = [
             [
                 'id'          => 1,
+                'company'     => 'Renaut Group',
+                'logo'        => '',
+                'position'    => 'CSO',
+                'period'      => 'Janvier 2026 - Février 2026',
+                'location'    => 'Le Havre, France',
+                'description' => 'Stage de fin de deuxieme année.',
+                'tasks'       => [
+                    'Installation d\'ordianteurs',
+                    'Création livre rouge',
+                    'Gestion du parc informatique',
+                ],
+                'skills'      => ['Acronis', 'Logiciel interne'],
+            ],
+            [
+                'id'          => 2,
                 'company'     => 'Patines et moi',
                 'logo'        => '',
                 'position'    => 'Développeur Web',
@@ -28,7 +43,7 @@ class ExperienceController extends AbstractController
             ],
 
             [
-                'id'          => 2,
+                'id'          => 3,
                 'company'     => 'TC-Bois',
                 'logo'        => '',
                 'position'    => 'Développeur Web',
@@ -44,7 +59,7 @@ class ExperienceController extends AbstractController
             ],
 
             [
-                'id'          => 3,
+                'id'          => 4,
                 'company'     => 'IUT de Saint-Malo',
                 'logo'        => '',
                 'position'    => 'Stagiaire au Service informatique',

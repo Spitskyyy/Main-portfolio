@@ -11,57 +11,103 @@ class ProjectController extends AbstractController
     #[Route('/projet', name: 'app_project')]
     public function index(): Response
     {
-    $projects = [
-        [
-            'id' => 1,
-            'title' => 'Stage Direct',
-            'description' => 'Application web développée avec Symfony permettant la gestion des stages.',
-            'image' => '/fichier/logo_stage-direct.png',
-            'tags' => ['Symfony', 'PHP', 'TWIG', 'MariaDB', 'Tailwind', 'Git'],
-            'githubLink' => 'https://github.com/Spitskyyy/stage-direct-final',
-            'docLink' => 'https://kdrive.infomaniak.com/app/share/842951/3b222404-55ba-45b9-95b3-75ef5180104c',
-            'demoLink' => 'https://stage-direct.emeric-grall.fr/',
-        ],
-        [
-            'id' => 2,
-            'title' => 'Dolibarr et Atedi',
-            'description' => 'Amélioration et mise en place de Dolibarr et Atedi pour un client en collaboration avec les SISR',
-            'image' => '/fichier/dolibarr.png',
-            'tags' => ['Symfony', 'JavaScript', 'MariaDB', 'API', 'Git'],
-            'githubLink' => 'https://github.com/Spitskyyy/Atedi_2024-final',
-            'docLink' => 'https://kdrive.infomaniak.com/app/share/842951/6d1d52cc-bc98-47a9-92f9-639269f658d2',
-        ],
-        [
-            'id' => 3,
-            'title' => 'Lueur du Mont',
-            'description' => 'Site web vitrine pour la mini-entreprise des premieres',
-            'image' => '/fichier/lueur.png',
-            'tags' => ['HTML', 'CSS', 'JavaScript', 'Git',],
-            'githubLink' => 'https://github.com/Spitskyyy/Lueur-du-Mont',
-            'demoLink' => 'https://spitskyyy.github.io/Lueur-du-Mont/',
-        ],
-        [
-            'id' => 4,
-            'title' => 'TC-bois',
-            'description' => 'Application web développée avec PHP permettant la gestion des stocks de l\'entreprise et la pub.',
-            'image' => '/fichier/stage.png',
-            'tags' => ['HTML', 'CSS', 'PHP', 'JavaScript', 'Git',],
-            'githubLink' => 'https://github.com/Spitskyyy/tc-bois',
-            'demoLink' => 'https://tc-bois.emeric-grall.fr/',
-        ],
-        [
-            'id' => 5,
-            'title' => 'Patines et moi',
-            'description' => 'Application web développée avec Synfony permettant la pub de l\'entreprise.',
-            'image' => '/fichier/stage2.png',
-            'tags' => ['Synfony', 'Tailwind', 'TWIG', 'JavaScript', 'MariaDB', 'Git'],
-            'githubLink' => 'https://github.com/Spitskyyy/stage-patinesetmoi',
-        ],
-    ];
+        // Projets SISR (Infrastructure, Systèmes et Réseaux)
+        $projectsSISR = [
+            [
+                'id' => 1,
+                'title' => 'Configuration Active Directory',
+                'description' => 'Mise en place d\'un serveur Windows Server avec Active Directory, GPO, DNS et DHCP pour la gestion centralisée des utilisateurs.',
+                'image' => '/fichier/windows-server.png',
+                'tags' => ['Windows Server', 'Active Directory', 'GPO', 'DNS', 'DHCP'],
+                'docLink' => '',
+            ],
+            [
+                'id' => 2,
+                'title' => 'Infrastructure GLPI + FOG',
+                'description' => 'Déploiement d\'une solution de gestion de parc informatique avec GLPI et déploiement d\'images système avec FOG.',
+                'image' => '/fichier/glpi.png',
+                'tags' => ['GLPI', 'FOG', 'Linux', 'Virtualisation', 'Debian'],
+                'docLink' => '',
+            ],
+            [
+                'id' => 3,
+                'title' => 'Configuration Routeur Cisco',
+                'description' => 'Configuration de routeurs et commutateurs Cisco : VLANs, routage inter-VLAN, ACLs et sécurisation du réseau.',
+                'image' => '/fichier/cisco.png',
+                'tags' => ['Cisco', 'VLAN', 'Routage', 'ACL', 'Packet Tracer'],
+                'docLink' => '',
+            ],
+            [
+                'id' => 4,
+                'title' => 'Supervision Réseau',
+                'description' => 'Mise en place d\'une solution de supervision réseau pour monitorer les équipements et services.',
+                'image' => '/fichier/supervision.png',
+                'tags' => ['Zabbix', 'SNMP', 'Linux', 'Monitoring'],
+                'docLink' => '',
+            ],
+            [
+                'id' => 5,
+                'title' => 'Sécurisation Infrastructure',
+                'description' => 'Audit de sécurité et mise en conformité RGPD d\'une infrastructure réseau.',
+                'image' => '/fichier/security.png',
+                'tags' => ['Sécurité', 'RGPD', 'Pare-feu', 'VPN', 'Audit'],
+                'docLink' => '',
+            ],
+        ];
+
+        // Projets SLAM (Développement) - Conservés de la première année
+        $projectsSLAM = [
+            [
+                'id' => 1,
+                'title' => 'Stage Direct',
+                'description' => 'Application web développée avec Symfony permettant la gestion des stages.',
+                'image' => '/fichier/logo_stage-direct.png',
+                'tags' => ['Symfony', 'PHP', 'TWIG', 'MariaDB', 'Tailwind', 'Git'],
+                'githubLink' => 'https://github.com/Spitskyyy/stage-direct-final',
+                'docLink' => 'https://kdrive.infomaniak.com/app/share/842951/3b222404-55ba-45b9-95b3-75ef5180104c',
+                'demoLink' => 'https://stage-direct.emeric-grall.fr/',
+            ],
+            [
+                'id' => 2,
+                'title' => 'Dolibarr et Atedi',
+                'description' => 'Amélioration et mise en place de Dolibarr et Atedi pour un client en collaboration avec les SISR',
+                'image' => '/fichier/dolibarr.png',
+                'tags' => ['Symfony', 'JavaScript', 'MariaDB', 'API', 'Git'],
+                'githubLink' => 'https://github.com/Spitskyyy/Atedi_2024-final',
+                'docLink' => 'https://kdrive.infomaniak.com/app/share/842951/6d1d52cc-bc98-47a9-92f9-639269f658d2',
+            ],
+            [
+                'id' => 3,
+                'title' => 'Lueur du Mont',
+                'description' => 'Site web vitrine pour la mini-entreprise des premieres',
+                'image' => '/fichier/lueur.png',
+                'tags' => ['HTML', 'CSS', 'JavaScript', 'Git'],
+                'githubLink' => 'https://github.com/Spitskyyy/Lueur-du-Mont',
+                'demoLink' => 'https://spitskyyy.github.io/Lueur-du-Mont/',
+            ],
+            [
+                'id' => 4,
+                'title' => 'TC-bois',
+                'description' => 'Application web développée avec PHP permettant la gestion des stocks de l\'entreprise et la pub.',
+                'image' => '/fichier/stage.png',
+                'tags' => ['HTML', 'CSS', 'PHP', 'JavaScript', 'Git'],
+                'githubLink' => 'https://github.com/Spitskyyy/tc-bois',
+                'demoLink' => 'https://tc-bois.emeric-grall.fr/',
+            ],
+            [
+                'id' => 5,
+                'title' => 'Patines et moi',
+                'description' => 'Application web développée avec Synfony permettant la pub de l\'entreprise.',
+                'image' => '/fichier/stage2.png',
+                'tags' => ['Symfony', 'Tailwind', 'TWIG', 'JavaScript', 'MariaDB', 'Git'],
+                'githubLink' => 'https://github.com/Spitskyyy/stage-patinesetmoi',
+            ],
+        ];
     
-    return $this->render('project/index.html.twig', [
-        'projects' => $projects,
-    ]);
-}
+        return $this->render('project/index.html.twig', [
+            'projectsSISR' => $projectsSISR,
+            'projectsSLAM' => $projectsSLAM,
+        ]);
+    }
 
 }

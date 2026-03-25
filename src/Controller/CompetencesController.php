@@ -11,135 +11,155 @@ class CompetencesController extends AbstractController
     #[Route('/competences', name: 'app_competences')]
     public function index(): Response
     {
-        // Compétences en développement
-        $competencesDev = [
-            [
-                'nom' => 'PHP',
-                'niveau' => 85,
-                'icone' => 'fab fa-php',
-                'couleur' => 'primary',
-                'description' => 'Développement d\'applications web avec PHP 8, POO, MVC, API REST.'
-            ],
-            [
-                'nom' => 'Symfony',
-                'niveau' => 80,
-                'icone' => 'fab fa-symfony',
-                'couleur' => 'success',
-                'description' => 'Création d\'applications avec Symfony 6, Doctrine ORM, Twig, formulaires.'
-            ],
-            [
-                'nom' => 'JavaScript',
-                'niveau' => 40,
-                'icone' => 'fab fa-js',
-                'couleur' => 'warning',
-                'description' => 'Développement front-end avec JavaScript ES6+, manipulation du DOM, AJAX.'
-            ],
-            [
-                'nom' => 'HTML/CSS',
-                'niveau' => 90,
-                'icone' => 'fab fa-html5',
-                'couleur' => 'danger',
-                'description' => 'Création de sites web responsive avec HTML5, CSS3, Flexbox, Grid.'
-            ],
-            [
-                'nom' => 'SQL',
-                'niveau' => 70,
-                'icone' => 'fas fa-database',
-                'couleur' => 'info',
-                'description' => 'Conception et optimisation de bases de données MySQL, PostgreSQL.'
-            ],
-            [
-                'nom' => 'Git',
-                'niveau' => 98,
-                'icone' => 'fab fa-git-alt',
-                'couleur' => 'dark',
-                'description' => 'Gestion de versions avec Git, GitHub, GitLab, branches, merge requests.'
-            ],
-
-        ];
-        
-        // Compétences en réseau
+        // Compétences en réseau et infrastructure (priorité SISR)
         $competencesReseau = [
             [
-                'nom' => 'TCP/IP',
-                'niveau' => 80,
+                'nom' => 'TCP/IP & Routage',
+                'niveau' => 85,
                 'icone' => 'fas fa-network-wired',
                 'couleur' => 'primary',
-                'description' => 'Configuration et dépannage de réseaux TCP/IP, sous-réseaux, routage.'
+                'description' => 'Configuration et dépannage de réseaux TCP/IP, sous-réseaux, routage statique et dynamique.'
             ],
             [
-                'nom' => 'Cisco',
-                'niveau' => 75,
+                'nom' => 'Cisco (Routeurs & Switchs)',
+                'niveau' => 80,
                 'icone' => 'fas fa-server',
                 'couleur' => 'info',
-                'description' => 'Configuration de routeurs et commutateurs Cisco, VLANs, ACLs.'
+                'description' => 'Configuration de routeurs et commutateurs Cisco, VLANs, ACLs, STP, routage inter-VLAN.'
             ],
             [
                 'nom' => 'Windows Server',
-                'niveau' => 70,
+                'niveau' => 85,
                 'icone' => 'fab fa-windows',
                 'couleur' => 'primary',
-                'description' => 'Administration de Windows Server, Active Directory, GPO, DNS, DHCP.'
+                'description' => 'Administration de Windows Server 2019/2022, Active Directory, GPO, DNS, DHCP, DFS.'
             ],
             [
-                'nom' => 'Linux',
+                'nom' => 'Linux (Debian/Ubuntu)',
                 'niveau' => 90,
                 'icone' => 'fab fa-linux',
                 'couleur' => 'warning',
-                'description' => 'Administration de serveurs Linux, shell scripting, services réseau.'
+                'description' => 'Administration de serveurs Linux, shell scripting (Bash), services réseau, Apache, Nginx.'
             ],
             [
                 'nom' => 'Virtualisation',
-                'niveau' => 50,
-                'icone' => 'fas fa-server',
+                'niveau' => 80,
+                'icone' => 'fas fa-cloud',
                 'couleur' => 'success',
-                'description' => 'Mise en place d\'environnements virtualisés avec VMware, VirtualBox, Docker.'
+                'description' => 'Mise en place d\'environnements virtualisés avec VMware ESXi, Proxmox, VirtualBox, Docker.'
             ],
             [
-                'nom' => 'Pare-feu',
-                'niveau' => 40,
+                'nom' => 'Services Réseau',
+                'niveau' => 85,
+                'icone' => 'fas fa-sitemap',
+                'couleur' => 'danger',
+                'description' => 'Déploiement et maintenance de services : DNS, DHCP, FTP, SSH, VPN, Proxy.'
+            ],
+            [
+                'nom' => 'Supervision & Monitoring',
+                'niveau' => 75,
+                'icone' => 'fas fa-chart-line',
+                'couleur' => 'info',
+                'description' => 'Mise en place de solutions de supervision : GLPI, Zabbix, Nagios, SNMP.'
+            ],
+            [
+                'nom' => 'Pare-feu & VPN',
+                'niveau' => 70,
                 'icone' => 'fas fa-shield-alt',
                 'couleur' => 'danger',
-                'description' => 'Configuration de pare-feu, règles de filtrage, NAT, VPN.'
+                'description' => 'Configuration de pare-feu (pfSense, iptables), règles de filtrage, NAT, VPN IPSec/OpenVPN.'
             ]
         ];
         
         // Compétences en cybersécurité
         $competencesCyber = [
             [
-                'nom' => 'Sécurité Web',
-                'niveau' => 70,
+                'nom' => 'Sécurité des systèmes',
+                'niveau' => 80,
                 'icone' => 'fas fa-lock',
                 'couleur' => 'danger',
-                'description' => 'Protection contre les vulnérabilités web (XSS, CSRF, injection SQL).'
+                'description' => 'Hardening des systèmes, gestion des correctifs, politiques de sécurité.'
             ],
             [
-                'nom' => 'Cryptographie',
-                'niveau' => 50,
+                'nom' => 'Cryptographie & PKI',
+                'niveau' => 70,
                 'icone' => 'fas fa-key',
                 'couleur' => 'warning',
-                'description' => 'Mise en œuvre de solutions de chiffrement, PKI, certificats SSL/TLS.'
+                'description' => 'Mise en œuvre de solutions de chiffrement, PKI, certificats SSL/TLS, HTTPS.'
             ],
             [
-                'nom' => 'Analyse de logs',
-                'niveau' => 40,
-                'icone' => 'fas fa-search',
+                'nom' => 'Analyse de vulnérabilités',
+                'niveau' => 65,
+                'icone' => 'fas fa-bug',
                 'couleur' => 'info',
-                'description' => 'Analyse de journaux de sécurité, détection d\'intrusions, SIEM.'
+                'description' => 'Utilisation d\'outils d\'audit (Nmap, Wireshark), détection d\'intrusions.'
             ],
             [
                 'nom' => 'Sécurité réseau',
                 'niveau' => 80,
                 'icone' => 'fas fa-shield-alt',
                 'couleur' => 'primary',
-                'description' => 'Mise en place de solutions de sécurité réseau, IDS/IPS, VPN.'
+                'description' => 'Mise en place de solutions de sécurité réseau, IDS/IPS, segmentation, DMZ.'
             ],
             [
-                'nom' => 'RGPD',
-                'niveau' => 80,
+                'nom' => 'RGPD & Conformité',
+                'niveau' => 85,
                 'icone' => 'fas fa-file-contract',
                 'couleur' => 'success',
-                'description' => 'Conformité RGPD, protection des données personnelles, audits.'
+                'description' => 'Conformité RGPD, protection des données personnelles, audits de sécurité.'
+            ],
+            [
+                'nom' => 'Gestion des incidents',
+                'niveau' => 70,
+                'icone' => 'fas fa-exclamation-triangle',
+                'couleur' => 'warning',
+                'description' => 'Procédures de réponse aux incidents, analyse de logs, PRA/PCA.'
+            ]
+        ];
+
+        // Compétences en développement (secondaire - acquis en SLAM)
+        $competencesDev = [
+            [
+                'nom' => 'Scripting (Bash/PowerShell)',
+                'niveau' => 80,
+                'icone' => 'fas fa-terminal',
+                'couleur' => 'dark',
+                'description' => 'Automatisation des tâches d\'administration avec Bash et PowerShell.'
+            ],
+            [
+                'nom' => 'PHP/Symfony',
+                'niveau' => 75,
+                'icone' => 'fab fa-php',
+                'couleur' => 'primary',
+                'description' => 'Développement d\'applications web avec PHP et le framework Symfony.'
+            ],
+            [
+                'nom' => 'HTML/CSS/JavaScript',
+                'niveau' => 80,
+                'icone' => 'fab fa-html5',
+                'couleur' => 'danger',
+                'description' => 'Création de sites web responsive et interfaces utilisateur.'
+            ],
+            [
+                'nom' => 'SQL',
+                'niveau' => 75,
+                'icone' => 'fas fa-database',
+                'couleur' => 'info',
+                'description' => 'Conception et administration de bases de données MySQL, MariaDB, PostgreSQL.'
+            ],
+            [
+                'nom' => 'Git',
+                'niveau' => 85,
+                'icone' => 'fab fa-git-alt',
+                'couleur' => 'dark',
+                'description' => 'Gestion de versions avec Git, GitHub, GitLab, branches, merge requests.'
+            ],
+            [
+                'nom' => 'Python',
+                'niveau' => 60,
+                'icone' => 'fab fa-python',
+                'couleur' => 'warning',
+                'description' => 'Scripts d\'automatisation et outils de sécurité en Python.'
             ]
         ];
 

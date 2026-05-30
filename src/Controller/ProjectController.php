@@ -11,7 +11,6 @@ class ProjectController extends AbstractController
     #[Route('/projet', name: 'app_project')]
     public function index(): Response
     {
-        // Projets SISR (Infrastructure, Systèmes et Réseaux)
         $projectsSISR = [
             [
                 'id' => 1,

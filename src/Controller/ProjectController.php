@@ -38,7 +38,7 @@ class ProjectController extends AbstractController
             ],
             [
                 'id' => 4,
-                'title' => 'Configuration Routeur Cisco, HP',
+                'title' => 'Configuration Routeur Cisco',
                 'description' => 'Configuration de routeurs et commutateurs Cisco : VLANs, routage inter-VLAN, ACLs et sécurisation du réseau.',
                 'image' => '/fichier/cisco.png',
                 'tags' => ['Cisco', 'VLAN', 'Routage', 'ACL', 'Packet Tracer'],

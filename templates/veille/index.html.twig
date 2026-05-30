@@ -1,460 +1,111 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Veille Numérique - Cybersécurité{% endblock %}
+{% block title %}Veille Numérique - Portfolio BTS SIO SISR{% endblock %}
 
 {% block body %}
 <div class="container py-5">
-
-    <div class="mb-5">
-        <h1 class="h2 fw-bold mb-2"><i class="fas fa-shield-alt text-primary me-2"></i>Veille Numérique — Cybersécurité</h1>
-        <p class="text-muted">Suivi mensuel de l'actualité en cybersécurité depuis septembre 2025</p>
+    <div class="mb-4">
+        <h1 class="display-5 fw-bold mb-2">Veille Numérique</h1>
+        <p class="text-muted lead mb-0">Infrastructure, Systèmes, Réseaux et Cybersécurité</p>
     </div>
 
     <div class="card mb-5 border-0 bg-light">
-        <div class="card-body p-4">
-            <h2 class="h5 fw-bold mb-2"><i class="fas fa-info-circle text-primary me-2"></i>Qu'est-ce que la veille numérique ?</h2>
-            <p class="mb-0 text-muted">
-                La veille numérique est une démarche qui consiste à surveiller régulièrement les évolutions technologiques,
-                les nouvelles menaces et les bonnes pratiques dans un domaine donné. Dans le cadre de ma formation en BTS SIO option SISR,
-                je me concentre sur la <strong>cybersécurité</strong> : attaques, failles, réglementations et tendances du secteur.
+        <div class="card-body">
+            <h2 class="h5 fw-bold mb-3">
+                <i class="fas fa-circle-info text-primary me-2"></i>Qu'est-ce que la veille numérique ?
+            </h2>
+            <p class="mb-0">
+                La veille numérique consiste à se tenir informé en continu des évolutions technologiques de son domaine.
+                En tant qu'étudiant en BTS SIO option SISR, je suis particulièrement les actualités liées à
+                l'administration systèmes et réseaux, à la virtualisation, au cloud et à la cybersécurité.
+                Vous trouverez ci-dessous une sélection de 2 sujets par mois, de septembre 2025 à juin 2026.
             </p>
         </div>
     </div>
 
-    {# ==================== SEPTEMBRE 2025 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-primary fs-6 me-3 px-3 py-2">Septembre 2025</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Fuite de données</span>
-                            <small class="text-muted">Septembre 2025</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Boulanger : données clients exposées via une attaque sur un prestataire tiers</h3>
-                        <p class="card-text small text-muted">
-                            L'enseigne d'électronique Boulanger a été touchée par une fuite de données clients en septembre 2025, exploitant une vulnérabilité chez un partenaire logistique tiers. Cet incident illustre la problématique de la supply chain numérique : la sécurité d'une entreprise n'est plus limitée à ses propres systèmes, mais s'étend à l'ensemble de ses prestataires. La CNIL a été notifiée conformément au RGPD dans les 72 heures suivant la découverte de la brèche.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Supply chain · Fuite de données · RGPD · CNIL</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-warning text-dark me-2">Tendances</span>
-                            <small class="text-muted">Septembre 2025</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">+50% d'attaques contre les PME entre novembre 2024 et septembre 2025</h3>
-                        <p class="card-text small text-muted">
-                            Les données publiées en septembre 2025 révèlent une hausse de plus de 50% des cyberattaques ciblant les PME sur les dix derniers mois. Deux tiers des PME françaises ont été touchées, souvent via des kits de piratage accessibles sur le dark web pour quelques euros. Ces entreprises, moins bien équipées que les grandes structures, restent les cibles privilégiées des cybercriminels qui misent sur la faiblesse des défenses plutôt que sur la valeur des données.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>PME · Ransomware · Statistiques · Dark web</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section class="mb-5">
+        <h2 class="h4 fw-bold mb-4">
+            <i class="fas fa-calendar-days text-primary me-2"></i>Articles suivis (Septembre 2025 - Juin 2026)
+        </h2>
 
-    {# ==================== OCTOBRE 2025 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-primary fs-6 me-3 px-3 py-2">Octobre 2025</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Ransomware</span>
-                            <small class="text-muted">Octobre 2025</small>
+        {% for month in veilleMonths %}
+            <div class="mb-4">
+                <h3 class="h5 fw-bold border-bottom pb-2 mb-3">{{ month.period }}</h3>
+                <div class="row row-cols-1 row-cols-lg-2 g-4">
+                    {% for article in month.articles %}
+                        <div class="col">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <span class="badge bg-{{ article.color }}">
+                                            <i class="fas {{ article.icon }} me-1"></i>{{ article.category }}
+                                        </span>
+                                        <small class="text-muted">{{ article.date }}</small>
+                                    </div>
+                                    <h4 class="h6 fw-bold card-title">{{ article.title }}</h4>
+                                    <p class="card-text small text-muted">{{ article.summary }}</p>
+                                </div>
+                                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-globe me-1"></i>{{ article.source }}
+                                    </small>
+                                    <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-{{ article.color }}">
+                                        Lire l'article <i class="fas fa-external-link-alt ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="h6 fw-bold mb-3">France Travail : 31 000 comptes piratés par le groupe Stormous</h3>
-                        <p class="card-text small text-muted">
-                            Le groupe criminel Stormous a revendiqué le piratage de France Travail en octobre-novembre 2025, compromettant 31 000 comptes de demandeurs d'emploi via des malwares de vol de données installés sur des ordinateurs personnels. C'est la deuxième attaque majeure subie par l'organisme en 2025, après la compromission de 340 000 dossiers via l'application Kairos en juillet. Ces incidents révèlent des systèmes obsolètes et une coordination insuffisante entre les plateformes de l'administration.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Ransomware · Administration publique · Infostealer · Stormous</small>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-warning text-dark me-2">Statistiques</span>
-                            <small class="text-muted">Octobre 2025</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Check Point : 1 938 cyberattaques par semaine en moyenne en octobre 2025</h3>
-                        <p class="card-text small text-muted">
-                            Le rapport mensuel de Check Point Research pour octobre 2025 révèle que les organisations font face en moyenne à 1 938 cyberattaques par semaine, soit une hausse de 2% par rapport à septembre et de 5% sur un an. Cette tendance confirme la pression constante exercée sur les systèmes d'information. L'éducation, la santé et les administrations publiques restent les secteurs les plus ciblés, avec des attaques combinant phishing, ransomware et exploitation de failles non corrigées.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Statistiques · Check Point · Phishing · Éducation</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        {% endfor %}
+    </section>
 
-    {# ==================== NOVEMBRE 2025 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-primary fs-6 me-3 px-3 py-2">Novembre 2025</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Logiciel médical</span>
-                            <small class="text-muted">Novembre 2025</small>
+    <section class="mb-5">
+        <h2 class="h4 fw-bold mb-4">
+            <i class="fas fa-toolbox text-primary me-2"></i>Mes outils et sources de veille
+        </h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for platform in veillePlatforms %}
+                <div class="col">
+                    <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body d-flex align-items-start">
+                                <div class="text-{{ platform.color }} me-3">
+                                    <i class="{{ platform.iconType }} {{ platform.icon }} fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h3 class="h6 fw-bold text-dark mb-1">{{ platform.name }}</h3>
+                                    <p class="small text-muted mb-0">{{ platform.description }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="h6 fw-bold mb-3">Cyberattaque du logiciel Weda : données de patients exfiltrées</h3>
-                        <p class="card-text small text-muted">
-                            Le 10 novembre 2025, une cyberattaque a visé le logiciel médical Weda, utilisé par des milliers de médecins libéraux en France. Des données personnelles de patients ont été partiellement exfiltrées, déclenchant des alertes dans de nombreux cabinets médicaux. L'incident, révélé publiquement en février 2026 lors d'un reportage télévisé, illustre la vulnérabilité des logiciels métiers du secteur de la santé, souvent peu audités et connectés à des données particulièrement sensibles.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Santé · Logiciel médical · Données patients · Exfiltration</small>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Supply chain</span>
-                            <small class="text-muted">Novembre 2025</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">FFF et Cdiscount piratés via leurs prestataires logistiques</h3>
-                        <p class="card-text small text-muted">
-                            La Fédération Française de Football (FFF) et Cdiscount ont toutes deux été victimes de cyberattaques en novembre 2025, exploitant des failles chez leurs prestataires tiers respectifs. Pour Cdiscount, l'intrusion du 22 novembre a exposé des données clients à cause d'un partenaire logistique défaillant. Ces incidents confirment une tendance de fond : en 2025, la menace exploite désormais systématiquement les accès légitimes accordés aux sous-traitants pour contourner les défenses périmètriques.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Supply chain · FFF · Cdiscount · Prestataire tiers</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-    </div>
+    </section>
 
-    {# ==================== DÉCEMBRE 2025 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-primary fs-6 me-3 px-3 py-2">Décembre 2025</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">DDoS massif</span>
-                            <small class="text-muted">Décembre 2025</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">La Poste et la Banque Postale : la plus grande attaque DDoS bancaire française</h3>
-                        <p class="card-text small text-muted">
-                            Entre le 22 décembre 2025 et le 5 janvier 2026, les infrastructures du groupe La Poste ont subi la plus grande attaque par déni de service distribué (DDoS) jamais enregistrée contre un établissement bancaire français. Des milliards de tentatives de connexion par seconde ont saturé les accès numériques, rendant les services en ligne indisponibles. Aucune fuite de données ni compromission des comptes n'a été constatée grâce à la résilience des infrastructures et une surveillance 24h/24.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>DDoS · Banque · Infrastructure critique · Résilience</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-secondary me-2">Espionnage</span>
-                            <small class="text-muted">Décembre 2025</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Ministère de l'Intérieur : intrusion sur les serveurs de messagerie</h3>
-                        <p class="card-text small text-muted">
-                            En décembre 2025, les serveurs de messagerie du ministère de l'Intérieur ont été compromis, permettant l'accès à des fichiers sensibles dont potentiellement le Traitement des Antécédents Judiciaires (TAJ) et le Fichier des Personnes Recherchées (FPR). Le ministre a déploré un manque d'hygiène numérique, notamment le partage de mots de passe en clair entre agents. L'ANSSI a signalé que la Russie est suspectée d'avoir mené des opérations ciblant la France en raison de son soutien à l'Ukraine.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Espionnage · État · Hygiène numérique · Russie · APT</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# ==================== JANVIER 2026 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-success fs-6 me-3 px-3 py-2">Janvier 2026</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Fichier national</span>
-                            <small class="text-muted">Janvier 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">FICOBA : accès illégitime au fichier national des comptes bancaires</h3>
-                        <p class="card-text small text-muted">
-                            Entre le 28 janvier et le 13 février 2026, un acteur malveillant a consulté une partie du fichier national FICOBA (Fichier des Comptes Bancaires) en usurpant les identifiants d'un fonctionnaire. En 16 jours d'intrusion, environ 1,2 million de comptes ont été consultés, exposant les RIB/IBAN, identités, adresses et identifiants fiscaux des titulaires. Cet incident ouvre la voie à des vagues de fraude et d'ingénierie sociale ciblées, avec un risque élevé d'usurpation d'identité bancaire.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>FICOBA · IBAN · Usurpation d'identité · Administration</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-warning text-dark me-2">Bilan ANSSI</span>
-                            <small class="text-muted">Janvier 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Panorama ANSSI 2025 : 3 586 événements traités, l'éducation et la santé en première ligne</h3>
-                        <p class="card-text small text-muted">
-                            L'ANSSI a publié son panorama de la cybermenace 2025 : 3 586 événements de sécurité traités, dont 1 366 incidents confirmés. Les secteurs les plus ciblés sont l'éducation et la recherche (34%), les ministères et collectivités (24%), la santé (10%) et les télécommunications (9%). L'Agence note l'émergence d'un "brouillard technologique" lié à la collaboration plus étroite entre acteurs étatiques et cybercriminels, rendant l'attribution des attaques de plus en plus difficile.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>ANSSI · Bilan · Éducation · Santé · Cybermenace</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# ==================== FÉVRIER 2026 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-success fs-6 me-3 px-3 py-2">Février 2026</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Données médicales</span>
-                            <small class="text-muted">Février 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Cegedim Santé : 15 millions de patients exposés — plus grande fuite médicale française</h3>
-                        <p class="card-text small text-muted">
-                            Fin février 2026, Cegedim a confirmé qu'une intrusion dans son logiciel médical MLM (MonLogicielMédical.com) fin 2025 avait entraîné la fuite de données administratives de 15 millions de patients (noms, prénoms, téléphones, adresses), ainsi que des annotations médicales pour 169 000 cas. Il s'agit de la plus importante fuite de données médicales révélée en France à ce jour. Une enquête a été ouverte par le parquet de Paris, et la CNIL a été saisie.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Santé · Données médicales · CNIL · Cegedim</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-info text-dark me-2">Stratégie nationale</span>
-                            <small class="text-muted">Février 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Stratégie nationale cybersécurité 2026-2030 présentée par le gouvernement français</h3>
-                        <p class="card-text small text-muted">
-                            Face à l'escalade des cyberattaques, le gouvernement français a présenté fin février 2026 sa nouvelle stratégie nationale de cybersécurité 2026-2030. Elle prévoit un renforcement des défenses des infrastructures critiques, une montée en compétences des agents publics, et un encadrement renforcé de l'IA dans les systèmes d'information sensibles. L'ANSSI a également lancé un service en ligne de pré-enregistrement pour les entités soumises à la directive NIS 2, dont la transposition en droit français est attendue début 2026.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>NIS 2 · ANSSI · Stratégie nationale · Politique cyber</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# ==================== MARS 2026 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-success fs-6 me-3 px-3 py-2">Mars 2026</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Données médicales</span>
-                            <small class="text-muted">Mars 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Cerballiance : 28 millions de patients exposés via une faille chez un prestataire</h3>
-                        <p class="card-text small text-muted">
-                            En mars 2026, Cerballiance (réseau de laboratoires d'analyses médicales) a subi une nouvelle cyberattaque exploitant la faille d'un prestataire tiers, exposant les dossiers médicaux et numéros de sécurité sociale de potentiellement 28 millions de patients. Cet incident met en lumière la fragilité persistante de la chaîne de sous-traitance dans le secteur de la santé, et confirme que la conformité réglementaire ne protège pas mécaniquement contre les intrusions si les accès fournisseurs ne sont pas maîtrisés.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Santé · Cerballiance · Numéro de sécurité sociale · Prestataire</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-secondary me-2">Géopolitique</span>
-                            <small class="text-muted">Mars 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Panorama ANSSI 2025 : espionnage russe et chinois visant les entités françaises</h3>
-                        <p class="card-text small text-muted">
-                            Publié le 11 mars 2026, le panorama de la cybermenace 2025 de l'ANSSI confirme des opérations d'espionnage menées par la Russie et la Chine contre des entités gouvernementales, des ONG, des médias, des journalistes et des entreprises de défense françaises. La Russie cible la France en raison de son soutien à l'Ukraine, avec des opérations susceptibles de s'intensifier à l'approche d'événements internationaux comme la présidence du G7 à Évian en 2026. L'Agence parle d'un "brouillard technologique" rendant l'attribution de plus en plus complexe.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Espionnage · Russie · Chine · ANSSI · Géopolitique</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# ==================== AVRIL 2026 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-success fs-6 me-3 px-3 py-2">Avril 2026</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Fédérations sportives</span>
-                            <small class="text-muted">Avril 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Vague systémique contre les fédérations sportives françaises : millions de licenciés exposés</h3>
-                        <p class="card-text small text-muted">
-                            Entre décembre 2025 et mars-avril 2026, une série d'attaques coordonnées a touché de nombreuses fédérations sportives françaises : UNSS, Fédération Française de Gymnastique, d'Athlétisme, de voile, de natation, de golf, de tennis et de chasse. Des millions de licenciés ont vu leurs données (identités, adresses, numéros de permis) exposées et revendues sur le dark web, alimentant des campagnes de phishing ciblées et des risques de cambriolages physiques exploitant la connaissance des habitudes sportives des victimes.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Sport · Phishing · Dark web · Données personnelles</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-warning text-dark me-2">IA & Cyber</span>
-                            <small class="text-muted">Avril 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">CERT-FR : alerte sur les risques des agents IA agentiques sur les postes de travail</h3>
-                        <p class="card-text small text-muted">
-                            Le 13 avril 2026, le CERT-FR a publié une alerte sur les vulnérabilités et risques liés aux produits d'automatisation par IA agentique. Ces agents IA autonomes, capables d'agir sur des systèmes d'information sans intervention humaine, élargissent considérablement la surface d'attaque des organisations. Les attaquants exploitent leurs permissions étendues pour se déplacer latéralement dans les réseaux. Le CERT-FR recommande un audit des droits accordés à ces outils et la mise en place de contrôles stricts sur leurs actions.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>IA agentique · CERT-FR · Surface d'attaque · Automatisation</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# ==================== MAI 2026 ==================== #}
-    <div class="mb-5">
-        <div class="d-flex align-items-center mb-4">
-            <span class="badge bg-success fs-6 me-3 px-3 py-2">Mai 2026</span>
-            <hr class="flex-grow-1">
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Faille Linux</span>
-                            <small class="text-muted">Mai 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">CVE-2026-31431 "Copy Fail" : faille critique dans le noyau Linux depuis 2017</h3>
-                        <p class="card-text small text-muted">
-                            Une faille critique baptisée "Copy Fail" (CVE-2026-31431) a été découverte dans le noyau Linux, présente depuis 2017 sans avoir été détectée. Elle permet à un attaquant d'obtenir un accès root sur de nombreuses distributions Linux. Sa longévité illustre le danger des vulnérabilités dormantes dans les logiciels open source massivement déployés. Un correctif urgent a été diffusé et l'application immédiate des mises à jour système est fortement recommandée pour tous les administrateurs Linux.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Linux · CVE · Privilège root · Patch management</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-danger me-2">Faille zero-day</span>
-                            <small class="text-muted">Mai 2026</small>
-                        </div>
-                        <h3 class="h6 fw-bold mb-3">Microsoft Defender : trois failles zero-day exploitées activement (BlueHammer, RedSun, UnDefend)</h3>
-                        <p class="card-text small text-muted">
-                            Trois failles zero-day dans Microsoft Defender ont été découvertes en cours d'exploitation active par des cybercriminels en mai 2026 : BlueHammer, RedSun et UnDefend. Ces vulnérabilités permettent de désactiver ou contourner la protection de l'antivirus intégré de Windows, exposant des millions de postes de travail à des attaques sans protection. Microsoft a publié des correctifs en urgence via Windows Update. Cet incident rappelle qu'aucun outil de sécurité n'est lui-même à l'abri d'être la cible d'une attaque.
-                        </p>
-                        <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted"><i class="fas fa-tag me-1"></i>Microsoft · Zero-day · Antivirus · Windows · Patch</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# Stratégie de veille #}
-    <div class="card border-0 bg-light mt-4">
-        <div class="card-body p-4">
-            <h2 class="h5 fw-bold mb-3"><i class="fas fa-search text-primary me-2"></i>Ma stratégie de veille</h2>
-            <p class="text-muted mb-3">
-                Pour assurer une veille régulière en cybersécurité, je consulte plusieurs sources fiables et complémentaires :
+    <div class="card border-0 bg-light">
+        <div class="card-body">
+            <h2 class="h5 fw-bold mb-3">
+                <i class="fas fa-lightbulb text-warning me-2"></i>Ma stratégie de veille
+            </h2>
+            <p>
+                Pour rester à jour dans les domaines de l'infrastructure et de la cybersécurité, j'ai mis en place
+                une stratégie de veille multi-sources :
             </p>
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <div class="d-flex align-items-start">
-                        <i class="fas fa-globe text-primary me-2 mt-1"></i>
-                        <div>
-                            <strong>Sources officielles</strong>
-                            <p class="small text-muted mb-0">ANSSI (cert.ssi.gouv.fr), CERT-FR, ENISA, CISA</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="d-flex align-items-start">
-                        <i class="fas fa-newspaper text-primary me-2 mt-1"></i>
-                        <div>
-                            <strong>Médias spécialisés</strong>
-                            <p class="small text-muted mb-0">IT-Connect, LeMagIT, ZDNet, BleepingComputer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="d-flex align-items-start">
-                        <i class="fas fa-rss text-primary me-2 mt-1"></i>
-                        <div>
-                            <strong>Flux RSS & réseaux</strong>
-                            <p class="small text-muted mb-0">Abonnements RSS, LinkedIn, communautés cyber</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ul class="mb-3">
+                <li><strong>Flux RSS</strong> : je suis les sites spécialisés (LeMagIT, IT-Connect) via un agrégateur.</li>
+                <li><strong>Sources officielles</strong> : je consulte régulièrement les alertes de l'ANSSI et de la CNIL.</li>
+                <li><strong>Communautés</strong> : je participe à des forums et subreddits d'administrateurs systèmes et réseaux.</li>
+                <li><strong>Alertes</strong> : j'utilise Google Alerts pour suivre des mots-clés techniques précis.</li>
+            </ul>
+            <p class="mb-0">
+                Cette approche me permet de rester informé des dernières vulnérabilités, évolutions matérielles et
+                bonnes pratiques, tout en développant une vision critique des informations reçues.
+            </p>
         </div>
     </div>
-
 </div>
 {% endblock %}

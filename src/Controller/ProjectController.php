@@ -11,37 +11,46 @@ class ProjectController extends AbstractController
     #[Route('/projet', name: 'app_project')]
     public function index(): Response
     {
+        // Projets SISR (Infrastructure, Systèmes et Réseaux)
         $projectsSISR = [
             [
                 'id' => 1,
                 'title' => 'Configuration Active Directory',
                 'description' => 'Mise en place d\'un serveur Windows Server avec Active Directory, GPO, DNS et DHCP pour la gestion centralisée des utilisateurs.',
-                'image' => '/fichier/AD.png',
+                'image' => '/fichier/windows-server.png',
                 'tags' => ['Windows Server', 'Active Directory', 'GPO', 'DNS', 'DHCP'],
                 'docLink' => '',
             ],
             [
                 'id' => 2,
-                'title' => 'Infrastructure GLPI + Zabbix',
-                'description' => 'Déploiement d\'une solution de gestion de parc informatique avec GLPI et déploiement d\'images système et Zabbix.',
+                'title' => 'Infrastructure GLPI + FOG',
+                'description' => 'Déploiement d\'une solution de gestion de parc informatique avec GLPI et déploiement d\'images système avec FOG.',
                 'image' => '/fichier/glpi.png',
-                'tags' => ['GLPI', 'Zabbix', 'Linux', 'Virtualisation', 'Debian'],
+                'tags' => ['GLPI', 'FOG', 'Linux', 'Virtualisation', 'Debian'],
                 'docLink' => '',
             ],
             [
                 'id' => 3,
-                'title' => 'Vitualisation Proxmox, Hyper-V',
-                'description' => 'Mise en place d\'une solution de virtualisation avec Proxmox et Hyper-V.',
-                'image' => '/fichier/proxmox.png',
-                'tags' => ['Proxmox', 'Virtualisation', 'Linux', 'Hyper-V'],
+                'title' => 'Configuration Routeur Cisco',
+                'description' => 'Configuration de routeurs et commutateurs Cisco : VLANs, routage inter-VLAN, ACLs et sécurisation du réseau.',
+                'image' => '/fichier/cisco.png',
+                'tags' => ['Cisco', 'VLAN', 'Routage', 'ACL', 'Packet Tracer'],
                 'docLink' => '',
             ],
             [
                 'id' => 4,
-                'title' => 'Configuration Routeur Cisco, HP',
-                'description' => 'Configuration de routeurs et commutateurs Cisco : VLANs, routage inter-VLAN, ACLs et sécurisation du réseau.',
-                'image' => '/fichier/cisco.png',
-                'tags' => ['Cisco', 'VLAN', 'Routage', 'ACL', 'Packet Tracer'],
+                'title' => 'Supervision Réseau',
+                'description' => 'Mise en place d\'une solution de supervision réseau pour monitorer les équipements et services.',
+                'image' => '/fichier/supervision.png',
+                'tags' => ['Zabbix', 'SNMP', 'Linux', 'Monitoring'],
+                'docLink' => '',
+            ],
+            [
+                'id' => 5,
+                'title' => 'Sécurisation Infrastructure',
+                'description' => 'Audit de sécurité et mise en conformité RGPD d\'une infrastructure réseau.',
+                'image' => '/fichier/security.png',
+                'tags' => ['Sécurité', 'RGPD', 'Pare-feu', 'VPN', 'Audit'],
                 'docLink' => '',
             ],
         ];

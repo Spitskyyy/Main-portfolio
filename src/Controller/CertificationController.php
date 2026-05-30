@@ -63,8 +63,8 @@ class CertificationController extends AbstractController
                 'date' => 'Février 2025',
                 'issuer' => 'netacad',
                 'description' => 'Certification pour agir efficacement sur la protection de vos outils numériques.',
-                'image' => '/fichier/cisco.png',
-                'fullImage' => '/fichier/cisco.png',
+                'image' => '/fichier/intro.png',
+                'fullImage' => '/fichier/intro.png',
                 'officialLink' => 'https://www.netacad.com',
             ],
             [

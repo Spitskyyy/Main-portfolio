@@ -1,162 +1,109 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Veille Numérique - Portfolio BTS SIO SLAM{% endblock %}
+{% block title %}Veille Numérique - Portfolio BTS SIO SISR{% endblock %}
 
 {% block body %}
 <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h2 fw-bold mb-0">Veille Numérique</h1>
-        <a href="{{ path('app_veille_feeds') }}" class="btn btn-primary">
-            <i class="fas fa-rss me-1"></i> Gérer mes flux RSS
-        </a>
+    <div class="mb-4">
+        <h1 class="display-5 fw-bold mb-2">Veille Numérique</h1>
+        <p class="text-muted lead mb-0">Infrastructure, Systèmes, Réseaux et Cybersécurité</p>
     </div>
-    
-    <div class="card mb-4">
+
+    <div class="card mb-5 border-0 bg-light">
         <div class="card-body">
-            <h2 class="h5 fw-bold mb-3">Qu'est-ce que la veille numérique ?</h2>
+            <h2 class="h5 fw-bold mb-3">
+                <i class="fas fa-circle-info text-primary me-2"></i>Qu'est-ce que la veille numérique ?
+            </h2>
             <p class="mb-0">
-                La veille numérique est une activité qui consiste à se tenir informé des évolutions technologiques
-                et des innovations dans son domaine professionnel.
+                La veille numérique consiste à se tenir informé en continu des évolutions technologiques de son domaine.
+                En tant qu'étudiant en BTS SIO option SISR, je suis particulièrement les actualités liées à
+                l'administration systèmes et réseaux, à la virtualisation, au cloud et à la cybersécurité.
+                Vous trouverez ci-dessous une sélection de 2 sujets par mois, de septembre 2025 à juin 2026.
             </p>
         </div>
     </div>
-    
-    {% if latestArticles|length > 0 %}
-        <div class="mb-5">
-            <h2 class="h4 fw-bold mb-4">Derniers articles</h2>
-            
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                {% for article in latestArticles|slice(0, 6) %}
-                    <div class="col">
+
+    <section class="mb-5">
+        <h2 class="h4 fw-bold mb-4">
+            <i class="fas fa-calendar-days text-primary me-2"></i>Articles suivis (Septembre 2025 - Juin 2026)
+        </h2>
+
+        {% for month in veilleMonths %}
+            <div class="mb-4">
+                <h3 class="h5 fw-bold border-bottom pb-2 mb-3">{{ month.period }}</h3>
+                <div class="row row-cols-1 row-cols-lg-2 g-4">
+                    {% for article in month.articles %}
+                        <div class="col">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <span class="badge bg-{{ article.color }}">
+                                            <i class="fas {{ article.icon }} me-1"></i>{{ article.category }}
+                                        </span>
+                                        <small class="text-muted">{{ article.date }}</small>
+                                    </div>
+                                    <h4 class="h6 fw-bold card-title">{{ article.title }}</h4>
+                                    <p class="card-text small text-muted">{{ article.summary }}</p>
+                                </div>
+                                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-globe me-1"></i>{{ article.source }}
+                                    </small>
+                                    <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-{{ article.color }}">
+                                        Lire l'article <i class="fas fa-external-link-alt ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section class="mb-5">
+        <h2 class="h4 fw-bold mb-4">
+            <i class="fas fa-toolbox text-primary me-2"></i>Mes outils et sources de veille
+        </h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for platform in veillePlatforms %}
+                <div class="col">
+                    <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
                         <div class="card h-100 shadow-sm">
-                            {% if article.image %}
-                                <div class="position-relative">
-                                    <img src="{{ article.image }}" class="card-img-top" alt="{{ article.title }}" style="height: 160px; object-fit: cover;">
-                                    <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ article.source }}</span>
+                            <div class="card-body d-flex align-items-start">
+                                <div class="text-{{ platform.color }} me-3">
+                                    <i class="{{ platform.iconType }} {{ platform.icon }} fa-2x"></i>
                                 </div>
-                            {% else %}
-                                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 160px;">
-                                    <i class="fas fa-newspaper fa-3x text-muted"></i>
-                                    <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ article.source }}</span>
+                                <div>
+                                    <h3 class="h6 fw-bold text-dark mb-1">{{ platform.name }}</h3>
+                                    <p class="small text-muted mb-0">{{ platform.description }}</p>
                                 </div>
-                            {% endif %}
-                            
-                            <div class="card-body">
-                                <h3 class="h6 fw-bold card-title">{{ article.title }}</h3>
-                                <p class="card-text small">{{ article.description|raw }}</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
-                                <small class="text-muted">{{ article.date }}</small>
-                                <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
-                                    Lire <i class="fas fa-external-link-alt ms-1"></i>
-                                </a>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
-    {% else %}
-        <div class="alert alert-info mb-4">
-            <i class="fas fa-info-circle me-2"></i>
-            Aucun article n'a été trouvé. Veuillez ajouter des flux RSS pour commencer votre veille numérique.
-        </div>
-    {% endif %}
-    
-    {# Reste du template inchangé... #}
-    
-    {% if categories|length > 0 and feedsByCategory|length > 0 %}
-        <div class="mb-5">
-            <h2 class="h4 fw-bold mb-4">Articles par catégorie</h2>
-            
-            <ul class="nav nav-tabs mb-4" id="categoryTabs" role="tablist">
-                {% for category in categories %}
-                    {% if feedsByCategory[category.name] is defined and feedsByCategory[category.name]|length > 0 %}
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link {% if loop.first %}active{% endif %}" 
-                                    id="tab-{{ loop.index }}" 
-                                    data-bs-toggle="tab" 
-                                    data-bs-target="#content-{{ loop.index }}" 
-                                    type="button" 
-                                    role="tab" 
-                                    aria-controls="content-{{ loop.index }}" 
-                                    aria-selected="{% if loop.first %}true{% else %}false{% endif %}">
-                                <i class="fas {{ category.icon }} me-1" style="color: var(--bs-{{ category.color }})"></i>
-                                {{ category.name }}
-                            </button>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            
-            <div class="tab-content" id="categoryTabsContent">
-                {% for category in categories %}
-                    {% if feedsByCategory[category.name] is defined and feedsByCategory[category.name]|length > 0 %}
-                        <div class="tab-pane fade {% if loop.first %}show active{% endif %}" 
-                             id="content-{{ loop.index }}" 
-                             role="tabpanel" 
-                             aria-labelledby="tab-{{ loop.index }}">
-                            
-                            {% if articlesByCategory[category.name] is defined and articlesByCategory[category.name]|length > 0 %}
-                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                                    {% for article in articlesByCategory[category.name] %}
-                                        <div class="col">
-                                            <div class="card h-100 shadow-sm">
-                                                {% if article.image %}
-                                                    <div class="position-relative">
-                                                        <img src="{{ article.image }}" class="card-img-top" alt="{{ article.title }}" style="height: 160px; object-fit: cover;">
-                                                        <span class="badge bg-{{ category.color }} position-absolute top-0 end-0 m-2">{{ article.source }}</span>
-                                                    </div>
-                                                {% else %}
-                                                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 160px;">
-                                                        <i class="fas {{ category.icon }} fa-3x text-{{ category.color }}"></i>
-                                                        <span class="badge bg-{{ category.color }} position-absolute top-0 end-0 m-2">{{ article.source }}</span>
-                                                    </div>
-                                                {% endif %}
-                                                
-                                                <div class="card-body">
-                                                    <h3 class="h6 fw-bold card-title">{{ article.title }}</h3>
-                                                    <p class="card-text small">{{ article.description|raw }}</p>
-                                                </div>
-                                                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
-                                                    <small class="text-muted">{{ article.date }}</small>
-                                                    <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-{{ category.color }}">
-                                                        Lire <i class="fas fa-external-link-alt ms-1"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                <div class="alert alert-info">
-                                    <i class="fas fa-info-circle me-2"></i>
-                                    Aucun article n'a été trouvé pour cette catégorie.
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
-    
-    <div class="card">
+    </section>
+
+    <div class="card border-0 bg-light">
         <div class="card-body">
-            <h2 class="h5 fw-bold mb-3">Ma stratégie de veille</h2>
+            <h2 class="h5 fw-bold mb-3">
+                <i class="fas fa-lightbulb text-warning me-2"></i>Ma stratégie de veille
+            </h2>
             <p>
-                Pour rester à jour dans le domaine du développement web et de la cybersécurité, j'ai mis en place une stratégie de veille
-                qui s'appuie sur plusieurs sources d'information :
+                Pour rester à jour dans les domaines de l'infrastructure et de la cybersécurité, j'ai mis en place
+                une stratégie de veille multi-sources :
             </p>
-            
             <ul class="mb-3">
-                <li><strong>Flux RSS</strong> : Je suis les blogs et sites spécialisés via leurs flux RSS.</li>
-                <li><strong>Réseaux sociaux</strong> : Je suis des experts et des communautés techniques sur Twitter et Reddit.</li>
+                <li><strong>Flux RSS</strong> : je suis les sites spécialisés (LeMagIT, IT-Connect) via un agrégateur.</li>
+                <li><strong>Sources officielles</strong> : je consulte régulièrement les alertes de l'ANSSI et de la CNIL.</li>
+                <li><strong>Communautés</strong> : je participe à des forums et subreddits d'administrateurs systèmes et réseaux.</li>
+                <li><strong>Alertes</strong> : j'utilise Google Alerts pour suivre des mots-clés techniques précis.</li>
             </ul>
-            
             <p class="mb-0">
-                Cette approche multi-sources me permet de rester informé des dernières évolutions technologiques et des bonnes pratiques
-                dans mon domaine, tout en développant une vision critique des informations reçues.
+                Cette approche me permet de rester informé des dernières vulnérabilités, évolutions matérielles et
+                bonnes pratiques, tout en développant une vision critique des informations reçues.
             </p>
         </div>
     </div>

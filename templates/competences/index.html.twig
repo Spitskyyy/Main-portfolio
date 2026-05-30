@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Compétences - Portfolio BTS SIO SLAM{% endblock %}
+{% block title %}Compétences - Portfolio BTS SIO SISR{% endblock %}
 
 {% block body %}
 <div class="container py-5">
@@ -26,13 +26,14 @@
             </div>
         </div>
     </div>
-<!-- Section Réseau -->
+<!-- Section Infrastructure & Réseau (Priorité SISR) -->
     <div class="mb-5">
         <div class="d-flex align-items-center mb-4">
-            <div class="me-3 text-info">
-                <i class="fas fa-network-wired fa-2x"></i>
+            <div class="me-3 text-primary">
+                <i class="fas fa-server fa-2x"></i>
             </div>
-            <h2 class="h3 fw-bold mb-0">Compétences en Réseau</h2>
+            <h2 class="h3 fw-bold mb-0">Infrastructure, Systèmes et Réseaux</h2>
+            <span class="badge bg-primary ms-3">Coeur de métier SISR</span>
         </div>
         
         <div class="card shadow-sm">
@@ -58,18 +59,30 @@
                 </div>
                 
                 <div class="mt-4">
-                    <h3 class="h5 fw-bold mb-3">Projets réseau réalisés</h3>
+                    <h3 class="h5 fw-bold mb-3">Projets infrastructure réalisés</h3>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex align-items-center">
                             <i class="fas fa-check-circle text-success me-3"></i>
                             <div>
-                                <strong>Serveur Windows</strong> - Configuration d'un serveur Windows avec Active Directory
+                                <strong>Active Directory</strong> - Configuration complète d'un domaine Windows Server avec GPO, DNS, DHCP
                             </div>
                         </li>
                         <li class="list-group-item d-flex align-items-center">
                             <i class="fas fa-check-circle text-success me-3"></i>
                             <div>
-                                <strong>Virtualisation</strong> - Mise en place de GLPI et FOG sur des machines virtuelles
+                                <strong>GLPI + FOG</strong> - Déploiement d'une solution de gestion de parc et déploiement d'images
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Infrastructure Cisco</strong> - Configuration de VLANs, routage inter-VLAN et ACLs
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Supervision réseau</strong> - Mise en place d'une solution de monitoring avec alertes
                             </div>
                         </li>
                     </ul>
@@ -78,13 +91,14 @@
         </div>
     </div>
 
-    <!-- Section Développement -->
+    <!-- Section Développement (acquis en SLAM) -->
     <div class="mb-5">
         <div class="d-flex align-items-center mb-4">
-            <div class="me-3 text-primary">
+            <div class="me-3 text-secondary">
                 <i class="fas fa-code fa-2x"></i>
             </div>
-            <h2 class="h3 fw-bold mb-0">Compétences en Développement</h2>
+            <h2 class="h3 fw-bold mb-0">Développement & Scripting</h2>
+            <span class="badge bg-secondary ms-3">Acquis en SLAM</span>
         </div>
         
         <div class="card shadow-sm">
@@ -132,13 +146,14 @@
     
     
     
-    <!-- Section Cybersécurité -->
+    <!-- Section Cybersécurité (Spécialisation SISR) -->
     <div class="mb-5">
         <div class="d-flex align-items-center mb-4">
             <div class="me-3 text-danger">
                 <i class="fas fa-shield-alt fa-2x"></i>
             </div>
-            <h2 class="h3 fw-bold mb-0">Compétences en Cybersécurité</h2>
+            <h2 class="h3 fw-bold mb-0">Cybersécurité</h2>
+            <span class="badge bg-danger ms-3">Spécialisation</span>
         </div>
         
         <div class="card shadow-sm">
@@ -169,7 +184,19 @@
                         <li class="list-group-item d-flex align-items-center">
                             <i class="fas fa-check-circle text-success me-3"></i>
                             <div>
-                                <strong>Mise en conformité RGPD</strong> - Accompagnement d'une entreprise dans sa mise en conformité RGPD
+                                <strong>Audit RGPD</strong> - Accompagnement d'une entreprise dans sa mise en conformité RGPD
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Sécurisation infrastructure</strong> - Configuration de pare-feu et mise en place de VPN
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <div>
+                                <strong>Analyse de vulnérabilités</strong> - Utilisation d'outils d'audit réseau (Nmap, Wireshark)
                             </div>
                         </li>
                     </ul>

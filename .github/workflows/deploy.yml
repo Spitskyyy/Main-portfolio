@@ -29,18 +29,15 @@ jobs:
     - name: 📂 Vider le cache de production
       run: php bin/console cache:clear --env=prod
 
-    - name: 🚀 Synchroniser les fichiers vers IONOS via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    - name: 🗑️ Nettoyer les fichiers inutiles avant transfert
+      run: rm -rf .git .github node_modules assets tests phpunit.xml.dist
+
+    - name: 🚀 Transfert sécurisé (SFTP) vers IONOS
+      uses: appleboy/scp-action@master
       with:
-        server: ${{ secrets.FTP_SERVER }}
+        host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /portfolio/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/assets/**
-          **/tests/**
-          .env.local
-          phpunit.xml.dist
+        port: 22
+        source: "."
+        target: "/" # <-- Modifié ici : pointera directement à la racine de votre hébergement

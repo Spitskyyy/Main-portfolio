@@ -1,0 +1,43 @@
+name: Déploiement Symfony sur IONOS
+
+on:
+  push:
+    branches:
+      - "v0/spitskyyy-1b6db2e6"
+
+jobs:
+  web-deploy:
+    name: Déploiement
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🚚 Obtenir le code le plus récent
+      uses: actions/checkout@v4
+
+    - name: 🐘 Configurer PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql
+        tools: composer:v2
+
+    - name: 📦 Installer les dépendances Composer
+      env:
+        APP_ENV: prod
+      run: composer install --no-dev --optimize-autoloader --no-interaction
+
+    - name: 📂 Vider le cache de production
+      run: php bin/console cache:clear --env=prod
+
+    - name: 🗑️ Nettoyer les fichiers inutiles avant transfert
+      run: rm -rf .git .github node_modules assets tests phpunit.xml.dist
+
+    - name: 🚀 Transfert sécurisé (SFTP) vers IONOS
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: 22
+        source: "."
+        target: "/" # <-- Modifié ici : pointera directement à la racine de votre hébergement

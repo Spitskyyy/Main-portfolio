@@ -15,18 +15,18 @@ class ProjectController extends AbstractController
         $projectsSISR = [
             [
                 'id' => 1,
-                'title' => 'Configuration Active Directory',
-                'description' => 'Mise en place d\'un serveur Windows Server avec Active Directory, GPO, DNS et DHCP pour la gestion centralisée des utilisateurs.',
-                'image' => '/fichier/windows-server.png',
-                'tags' => ['Windows Server', 'Active Directory', 'GPO', 'DNS', 'DHCP'],
-                'docLink' => '',
-            ],
-            [
-                'id' => 2,
                 'title' => 'Infrastructure GLPI + FOG',
                 'description' => 'Déploiement d\'une solution de gestion de parc informatique avec GLPI et déploiement d\'images système avec FOG.',
                 'image' => '/fichier/glpi.png',
                 'tags' => ['GLPI', 'FOG', 'Linux', 'Virtualisation', 'Debian'],
+                'docLink' => '',
+            ],
+            [
+                'id' => 2,
+                'title' => 'Configuration Active Directory sur Hyper-V',
+                'description' => 'Mise en place d\'un serveur Windows Server avec Active Directory, GPO, DNS et DHCP pour la gestion centralisée des utilisateurs.',
+                'image' => '/fichier/windows-server.png',
+                'tags' => ['Windows Server', 'Active Directory', 'GPO', 'DNS', 'DHCP', 'Hyper-V'],
                 'docLink' => '',
             ],
             [
@@ -39,18 +39,18 @@ class ProjectController extends AbstractController
             ],
             [
                 'id' => 4,
-                'title' => 'Supervision Réseau',
-                'description' => 'Mise en place d\'une solution de supervision réseau pour monitorer les équipements et services.',
-                'image' => '/fichier/supervision.png',
-                'tags' => ['Zabbix', 'SNMP', 'Linux', 'Monitoring'],
+                'title' => 'Hypervision Proxmox et Hyper-V',
+                'description' => 'Mise en place d\'une solution de virtualisation avec Proxmox et Hyper-V.',
+                'image' => '/fichier/proxmox.png',
+                'tags' => ['Proxmox', 'Hyper-V', 'Virtualisation', 'Linux', 'Windows Server'],
                 'docLink' => '',
             ],
             [
                 'id' => 5,
-                'title' => 'Sécurisation Infrastructure',
-                'description' => 'Audit de sécurité et mise en conformité RGPD d\'une infrastructure réseau.',
-                'image' => '/fichier/security.png',
-                'tags' => ['Sécurité', 'RGPD', 'Pare-feu', 'VPN', 'Audit'],
+                'title' => 'Mise en place d\'une cluster HA avec Proxmox',
+                'description' => 'Configuration d\'un cluster de haute disponibilité avec Proxmox pour assurer la continuité de service en cas de défaillance d\'un nœud.',
+                'image' => '/fichier/proxmox.png',
+                'tags' => ['Proxmox', 'Cluster', 'HA', 'Virtualisation', 'Linux'],
                 'docLink' => '',
             ],
         ];
@@ -65,7 +65,7 @@ class ProjectController extends AbstractController
                 'tags' => ['Symfony', 'PHP', 'TWIG', 'MariaDB', 'Tailwind', 'Git'],
                 'githubLink' => 'https://github.com/Spitskyyy/stage-direct-final',
                 'docLink' => 'https://kdrive.infomaniak.com/app/share/842951/3b222404-55ba-45b9-95b3-75ef5180104c',
-                'demoLink' => 'https://stage-direct.emeric-grall.fr/',
+
             ],
             [
                 'id' => 2,
@@ -92,7 +92,6 @@ class ProjectController extends AbstractController
                 'image' => '/fichier/stage.png',
                 'tags' => ['HTML', 'CSS', 'PHP', 'JavaScript', 'Git'],
                 'githubLink' => 'https://github.com/Spitskyyy/tc-bois',
-                'demoLink' => 'https://tc-bois.emeric-grall.fr/',
             ],
             [
                 'id' => 5,

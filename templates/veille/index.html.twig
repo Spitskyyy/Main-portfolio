@@ -1,111 +1,69 @@
-{% extends 'base.html.twig' %}
+﻿{% extends 'base.html.twig' %}
 
-{% block title %}Veille Numérique - Portfolio BTS SIO SISR{% endblock %}
+{% block title %}Veille numérique - Portfolio Emeric Grall{% endblock %}
 
 {% block body %}
-<div class="container py-5">
-    <div class="mb-4">
-        <h1 class="display-5 fw-bold mb-2">Veille Numérique</h1>
-        <p class="text-muted lead mb-0">Cybersécurité &mdash; BTS SIO option SISR</p>
-    </div>
+    <div class="container py-5">
+        <section class="mb-5">
+            <span class="badge bg-primary mb-2">Veille numérique</span>
+            <h1 class="display-5 fw-bold">Ma veille cybersécurité</h1>
+            <p class="lead text-muted">Suivi des événements, menaces et outils de cybersécurité en lien avec ma formation BTS SIO SISR.</p>
+        </section>
 
-    <div class="card mb-5 border-0 bg-light">
-        <div class="card-body">
-            <h2 class="h5 fw-bold mb-3">
-                <i class="fas fa-circle-info text-primary me-2"></i>Qu'est-ce que la veille numérique ?
-            </h2>
-            <p class="mb-0">
-                La veille numérique consiste à se tenir informé en continu des évolutions technologiques de son domaine.
-                En tant qu'étudiant en BTS SIO option SISR, j'ai choisi de concentrer ma veille sur la
-                <strong>cybersécurité</strong> : vulnérabilités, attaques, bonnes pratiques de protection et conformité.
-                Vous trouverez ci-dessous une sélection de 2 articles par mois, de septembre 2025 à juin 2026.
-            </p>
-        </div>
-    </div>
-
-    <section class="mb-5">
-        <h2 class="h4 fw-bold mb-4">
-            <i class="fas fa-calendar-days text-primary me-2"></i>Articles suivis (Septembre 2025 - Juin 2026)
-        </h2>
-
-        {% for month in veilleMonths %}
-            <div class="mb-4">
-                <h3 class="h5 fw-bold border-bottom pb-2 mb-3">{{ month.period }}</h3>
-                <div class="row row-cols-1 row-cols-lg-2 g-4">
-                    {% for article in month.articles %}
-                        <div class="col">
-                            <div class="card h-100 shadow-sm">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start mb-3">
-                                        <span class="badge bg-{{ article.color }}">
-                                            <i class="fas {{ article.icon }} me-1"></i>{{ article.category }}
-                                        </span>
-                                        <small class="text-muted">{{ article.date }}</small>
+        <section class="mb-5">
+            <h2 class="h3 fw-bold mb-4">Actualités par mois</h2>
+            {% for month in veilleMonths %}
+                <div class="mb-4">
+                    <h3 class="h5 fw-semibold mb-3">{{ month.period }}</h3>
+                    <div class="row g-3">
+                        {% for article in month.articles %}
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <span class="badge bg-{{ article.color }} mb-2">{{ article.category }}</span>
+                                        <h4 class="h6 card-title">{{ article.title }}</h4>
+                                        <p class="text-muted small mb-2">
+                                            <i class="fas {{ article.icon }} me-2"></i>{{ article.date }} • {{ article.source }}
+                                        </p>
+                                        <p class="card-text text-secondary">{{ article.summary }}</p>
                                     </div>
-                                    <h4 class="h6 fw-bold card-title">{{ article.title }}</h4>
-                                    <p class="card-text small text-muted">{{ article.summary }}</p>
-                                </div>
-                                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">
-                                        <i class="fas fa-globe me-1"></i>{{ article.source }}
-                                    </small>
-                                    <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-{{ article.color }}">
-                                        Lire l'article <i class="fas fa-external-link-alt ms-1"></i>
-                                    </a>
+                                    <div class="card-footer bg-white border-top-0">
+                                        <a href="{{ article.link }}" class="btn btn-sm btn-outline-primary" target="_blank" rel="noreferrer noopener">
+                                            Lire l'article
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endfor %}
-    </section>
-
-    <section class="mb-5">
-        <h2 class="h4 fw-bold mb-4">
-            <i class="fas fa-toolbox text-primary me-2"></i>Mes outils et sources de veille
-        </h2>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {% for platform in veillePlatforms %}
-                <div class="col">
-                    <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
-                        <div class="card h-100 shadow-sm">
-                            <div class="card-body d-flex align-items-start">
-                                <div class="text-{{ platform.color }} me-3">
-                                    <i class="{{ platform.iconType }} {{ platform.icon }} fa-2x"></i>
-                                </div>
-                                <div>
-                                    <h3 class="h6 fw-bold text-dark mb-1">{{ platform.name }}</h3>
-                                    <p class="small text-muted mb-0">{{ platform.description }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        {% endfor %}
+                    </div>
                 </div>
             {% endfor %}
-        </div>
-    </section>
+        </section>
 
-    <div class="card border-0 bg-light">
-        <div class="card-body">
-            <h2 class="h5 fw-bold mb-3">
-                <i class="fas fa-lightbulb text-warning me-2"></i>Ma stratégie de veille
-            </h2>
-            <p>
-                Pour rester à jour dans les domaines de l'infrastructure et de la cybersécurité, j'ai mis en place
-                une stratégie de veille multi-sources :
-            </p>
-            <ul class="mb-3">
-                <li><strong>Flux RSS</strong> : je suis les sites spécialisés (LeMagIT, IT-Connect) via un agrégateur.</li>
-                <li><strong>Sources officielles</strong> : je consulte régulièrement les alertes de l'ANSSI et de la CNIL.</li>
-                <li><strong>Communautés</strong> : je participe à des forums et subreddits d'administrateurs systèmes et réseaux.</li>
-                <li><strong>Alertes</strong> : j'utilise Google Alerts pour suivre des mots-clés techniques précis.</li>
-            </ul>
-            <p class="mb-0">
-                Cette approche me permet de rester informé des dernières vulnérabilités, évolutions matérielles et
-                bonnes pratiques, tout en développant une vision critique des informations reçues.
-            </p>
-        </div>
+        <section class="mb-5">
+            <h2 class="h3 fw-bold mb-4">Outils et sources de veille</h2>
+            <div class="row g-4">
+                {% for platform in veillePlatforms %}
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="badge bg-{{ platform.color }} me-3">
+                                        <i class="{{ platform.iconType }} {{ platform.icon }}"></i>
+                                    </span>
+                                    <h3 class="h6 mb-0">{{ platform.name }}</h3>
+                                </div>
+                                <p class="text-muted small">{{ platform.description }}</p>
+                            </div>
+                            <div class="card-footer bg-white border-top-0">
+                                <a href="{{ platform.url }}" target="_blank" rel="noreferrer noopener" class="text-decoration-none">
+                                    Visiter <i class="fas fa-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
     </div>
-</div>
 {% endblock %}

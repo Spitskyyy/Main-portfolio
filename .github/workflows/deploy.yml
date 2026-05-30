@@ -3,7 +3,7 @@ name: Déploiement Symfony sur IONOS
 on:
   push:
     branches:
-      - "v0/spitskyyy-1b6db2e6" # <-- Le changement est ici !
+      - "v0/spitskyyy-1b6db2e6"
 
 jobs:
   web-deploy:
@@ -17,11 +17,13 @@ jobs:
     - name: 🐘 Configurer PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2' # Pensez à vérifier la version de PHP sur votre tableau de bord IONOS
+        php-version: '8.2'
         extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql
         tools: composer:v2
 
     - name: 📦 Installer les dépendances Composer
+      env:
+        APP_ENV: prod
       run: composer install --no-dev --optimize-autoloader --no-interaction
 
     - name: 📂 Vider le cache de production
@@ -33,7 +35,7 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /portfolio/ # Adaptez ce dossier selon la configuration de votre nom de domaine sur IONOS (mettez / si c'est à la racine)
+        server-dir: /portfolio/
         exclude: |
           **/.git*
           **/.git*/**

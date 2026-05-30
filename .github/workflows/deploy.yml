@@ -1,0 +1,44 @@
+name: Déploiement Symfony sur IONOS
+
+on:
+  push:
+    branches:
+      - "v0/spitskyyy-1b6db2e6" # <-- Le changement est ici !
+
+jobs:
+  web-deploy:
+    name: Déploiement
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🚚 Obtenir le code le plus récent
+      uses: actions/checkout@v4
+
+    - name: 🐘 Configurer PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2' # Pensez à vérifier la version de PHP sur votre tableau de bord IONOS
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql
+        tools: composer:v2
+
+    - name: 📦 Installer les dépendances Composer
+      run: composer install --no-dev --optimize-autoloader --no-interaction
+
+    - name: 📂 Vider le cache de production
+      run: php bin/console cache:clear --env=prod
+
+    - name: 🚀 Synchroniser les fichiers vers IONOS via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: /portfolio/ # Adaptez ce dossier selon la configuration de votre nom de domaine sur IONOS (mettez / si c'est à la racine)
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/assets/**
+          **/tests/**
+          .env.local
+          phpunit.xml.dist
